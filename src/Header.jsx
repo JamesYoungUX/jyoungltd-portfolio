@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Header = () => {
   const [theme, setTheme] = useState('system');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme') || 'system';
@@ -59,12 +60,26 @@ const Header = () => {
         >
           About
         </Link>
-        <Link to="/case-studies" className="relative pb-1 border-b-2 border-transparent hover:border-current transition-all duration-200 body-text" style={{
-          fontSize: 'clamp(14px, 2vw, 16px)',
-          fontWeight: 460,
-          lineHeight: 1.5,
-          color: 'var(--text-secondary)'
-        }}>Case Studies</Link>
+        <button
+          className="relative pb-1 border-b-2 border-transparent hover:border-current transition-all duration-200 body-text bg-transparent border-none cursor-pointer"
+          style={{
+            fontSize: 'clamp(14px, 2vw, 16px)',
+            fontWeight: 460,
+            lineHeight: 1.5,
+            color: 'var(--text-secondary)'
+          }}
+          onClick={() => {
+            navigate('/');
+            setTimeout(() => {
+              const section = document.getElementById('projects');
+              if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+              }
+            }, 100);
+          }}
+        >
+          Case Studies
+        </button>
         <Link to="/resume" className="relative pb-1 border-b-2 border-transparent hover:border-current transition-all duration-200 body-text" style={{
           fontSize: 'clamp(14px, 2vw, 16px)',
           fontWeight: 460,

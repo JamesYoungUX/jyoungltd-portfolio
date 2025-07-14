@@ -1,15 +1,76 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Header from './Header';
+import Footer from './Footer';
+
+const caseStudies = [
+  {
+    title: 'AI Powered Workflow to Enhance Standardized Episodes of Care (SEOC)',
+    company: 'Veterans Affairs',
+    description: 'Leading a multidisciplinary team, I architected an intuitive solution streamlining the creation and management of SEOCs, driving both clinical and operational improvements.',
+    link: '/case-study/seoc',
+    image: 'https://images.unsplash.com/photo-1558655146-d09347e92766?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    tags: ['AI', 'Healthcare Innovation'],
+    year: '2024–2025',
+  },
+  {
+    title: 'AI-Powered Healthcare Dashboard Form Intake (EPSI)',
+    company: 'Veterans Affairs',
+    description: 'Designed and delivered an advanced AI-powered dashboard for the VA, streamlining form intake and clinical workflows for EPSI. Focused on accessibility, data integrity, and seamless user experience for healthcare professionals.',
+    link: '/case-study/epsi',
+    image: 'https://images.unsplash.com/photo-1545235617-9465d2a55698?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    tags: ['AI', 'HEALTHCARE UX', 'PRODUCT DESIGN'],
+    year: '2022–2025',
+  },
+  {
+    title: 'Automating Patient-Therapist Alignment in the COVID-19 Recovery Era',
+    company: 'Resilience Lab',
+    description: 'An immersive digital experience blending 3D environments with intuitive user interfaces. Built using Three.js and WebGL to create seamless interactions.',
+    link: '/case-study/resilience',
+    image: 'https://images.unsplash.com/photo-1534972195531-d756b9bfa9f2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    tags: ['UX RESEARCH', 'PRODUCT DESIGN', 'STRATEGY', 'LEADERSHIP'],
+    year: '2022-2023',
+  },
+  {
+    title: 'Transforming Value-Based Care Through Design-Driven Innovation',
+    company: 'Pearl Health',
+    description: 'Pearl Health empowers independent primary care providers to thrive in value-based care models, surfacing clinically relevant, actionable insights via a platform that fits seamlessly into their everyday workflows. As the first product designer at Pearl, I played a foundational role—building the initial design language, conceiving the signature hex map patient interface, and helping evolve business strategy through thoughtful, human-centered design.',
+    link: '/case-study/pearl',
+    image: 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=800&q=80',
+    tags: ['Healthcare', 'Value-Based Care', 'Product Design'],
+    year: '2021-2022',
+  },
+  {
+    title: 'Ayva: Redesigning Surgical Care With a Digital Assistant',
+    company: 'Bravado Health',
+    description: 'Reimagined the surgical care experience by designing Ayva, a digital assistant that guides patients and care teams through pre- and post-operative workflows, improving adherence and satisfaction.',
+    link: '/case-study/ayva',
+    image: 'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=800&q=80',
+    tags: ['STRATEGY', 'DESIGN LEADERSHIP', 'HANDS ON DESIGN'],
+    year: '2018-2021',
+  },
+];
+
+const featured = caseStudies[0];
+const others = caseStudies.slice(1);
 
 const Portfolio = () => {
   const [theme, setTheme] = useState('system');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [showTopBtn, setShowTopBtn] = useState(false);
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme') || 'system';
     setTheme(savedTheme);
     applyTheme(savedTheme);
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowTopBtn(window.scrollY > 300);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const applyTheme = (newTheme) => {
@@ -30,6 +91,10 @@ const Portfolio = () => {
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
+  };
+
+  const handleScrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const badgeStyle = {
@@ -292,118 +357,127 @@ const Portfolio = () => {
               lineHeight: 1.2,
               color: 'var(--text-primary)'
             }}>Case Studies</h2>
-            
-            <div className="grid grid-cols-1 gap-12">
-              {/* Project 1 */}
-              <div className="border-gradient p-1" style={{
+            {/* Featured Case Study */}
+            <Link
+              to={featured.link}
+              className="block border-gradient p-1 rounded-lg mb-12 flex flex-col transition-transform duration-200 hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[var(--border-primary)]"
+              style={{
                 position: 'relative',
                 borderRadius: '0.5rem',
                 background: 'linear-gradient(var(--bg-secondary), var(--bg-secondary)) padding-box, linear-gradient(90deg, var(--border-primary), var(--border-secondary)) border-box',
-                border: '1px solid transparent'
-              }}>
-                <div className="p-6 rounded-md" style={{ background: 'var(--bg-secondary)' }}>
-                  <div className="project-image mb-6" style={{
+                border: '1px solid transparent',
+                minHeight: 420,
+                textDecoration: 'none'
+              }}
+              tabIndex={0}
+            >
+              <div className="p-6 rounded-md flex flex-col h-full" style={{ background: 'var(--bg-secondary)' }}>
+                <div
+                  className="project-image mb-6"
+                  style={{
                     height: '200px',
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                     borderRadius: '0.375rem',
-                    backgroundImage: 'url("https://images.unsplash.com/photo-1558655146-d09347e92766?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80")'
-                  }}></div>
-                  <div className="flex flex-col md:flex-row justify-between mb-4">
-                    <h3 className="text-xl font-medium mb-2 md:mb-0" style={{ color: 'var(--text-primary)' }}>AI Powered Workflow to Enhance Standardized Episodes of Care (SEOC)</h3>
-                    <span style={{ color: 'var(--text-tertiary)' }}>AI, Healthcare Innovation • 2024–2025</span>
-                  </div>
-                  <p className="body-text mb-6" style={{
-                    fontSize: 'clamp(14px, 2vw, 16px)',
-                    fontWeight: 460,
-                    lineHeight: 1.5,
-                    color: 'var(--text-secondary)'
-                  }}>
-                    Leading a multidisciplinary team, I architected an intuitive solution streamlining the creation and management of SEOCs, driving both clinical and operational improvements.
-                  </p>
-                  <Link to="/case-study/seoc" className="btn-text" style={{
-                    fontSize: '14px',
-                    fontWeight: 560,
-                    color: 'var(--text-primary)'
+                    backgroundImage: `url('${featured.image}')`
+                  }}
+                ></div>
+                <div className="flex flex-col md:flex-row justify-between mb-2">
+                  <h2 className="text-xl font-medium mb-2 md:mb-0" style={{ color: 'var(--text-primary)' }}>{featured.title}</h2>
+                </div>
+                {/* Featured Case Study tags */}
+                <div className="flex flex-wrap gap-2">
+                  {featured.tags.map((tag, i) => (
+                    <span key={i} className="inline-block bg-white/10 text-[var(--text-primary)] px-3 py-1 rounded-full text-xs font-semibold tracking-wide uppercase border border-[var(--border-primary)]">{tag}</span>
+                  ))}
+                </div>
+                <p className="body-text mb-6 flex-1" style={{
+                  fontSize: 'clamp(14px, 2vw, 16px)',
+                  fontWeight: 460,
+                  lineHeight: 1.5,
+                  color: 'var(--text-secondary)'
+                }}>
+                  {featured.description}
+                </p>
+                <div className="flex items-center justify-between mt-auto">
+                  <span className="btn-text" style={{
+                    fontSize: '18px',
+                    fontWeight: 700,
+                    color: 'var(--text-primary)',
+                    letterSpacing: '0.01em',
+                    textDecoration: 'underline',
+                    marginRight: '1.5rem'
                   }}>
                     View Case Study
-                  </Link>
-                </div>
-              </div>
-              
-              {/* Project 2 */}
-              <div className="border-gradient p-1" style={{
-                position: 'relative',
-                borderRadius: '0.5rem',
-                background: 'linear-gradient(var(--bg-secondary), var(--bg-secondary)) padding-box, linear-gradient(90deg, var(--border-primary), var(--border-secondary)) border-box',
-                border: '1px solid transparent'
-              }}>
-                <div className="p-6 rounded-md" style={{ background: 'var(--bg-secondary)' }}>
-                  <div className="project-image mb-6" style={{
-                    height: '200px',
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                    borderRadius: '0.375rem',
-                    backgroundImage: 'url("https://images.unsplash.com/photo-1545235617-9465d2a55698?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80")'
-                  }}></div>
-                  <div className="flex flex-col md:flex-row justify-between mb-4">
-                    <h3 className="text-xl font-medium mb-2 md:mb-0" style={{ color: 'var(--text-primary)' }}>Nebula Design System</h3>
-                    <span style={{ color: 'var(--text-tertiary)' }}>Design System, Front-end • 2022</span>
+                  </span>
+                  <div className="flex flex-col items-end">
+                    <span style={{ color: 'var(--text-primary)', fontSize: '18px', fontWeight: 700, letterSpacing: '0.01em' }}>{featured.company}</span>
+                    <span style={{ color: 'var(--text-tertiary)', fontSize: '15px', fontWeight: 500 }}>{featured.year}</span>
                   </div>
-                  <p className="body-text mb-6" style={{
-                    fontSize: 'clamp(14px, 2vw, 16px)',
-                    fontWeight: 460,
-                    lineHeight: 1.5,
-                    color: 'var(--text-secondary)'
-                  }}>
-                    A comprehensive design system created for a suite of enterprise applications. Developed component library with documentation and implemented accessibility standards.
-                  </p>
-                  <Link to="/case-study/nebula" className="btn-text" style={{
-                    fontSize: '14px',
-                    fontWeight: 560,
-                    color: 'var(--text-primary)'
-                  }}>
-                    View Case Study
-                  </Link>
                 </div>
               </div>
-              
-              {/* Project 3 */}
-              <div className="border-gradient p-1" style={{
-                position: 'relative',
-                borderRadius: '0.5rem',
-                background: 'linear-gradient(var(--bg-secondary), var(--bg-secondary)) padding-box, linear-gradient(90deg, var(--border-primary), var(--border-secondary)) border-box',
-                border: '1px solid transparent'
-              }}>
-                <div className="p-6 rounded-md" style={{ background: 'var(--bg-secondary)' }}>
-                  <div className="project-image mb-6" style={{
-                    height: '200px',
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                    borderRadius: '0.375rem',
-                    backgroundImage: 'url("https://images.unsplash.com/photo-1534972195531-d756b9bfa9f2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80")'
-                  }}></div>
-                  <div className="flex flex-col md:flex-row justify-between mb-4">
-                    <h3 className="text-xl font-medium mb-2 md:mb-0" style={{ color: 'var(--text-primary)' }}>Prism 3D Experience</h3>
-                    <span style={{ color: 'var(--text-tertiary)' }}>3D Design, Interactive Development • 2022</span>
+            </Link>
+            {/* Remaining Case Studies in 2-column grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+              {others.map((cs, idx) => (
+                <Link
+                  key={idx}
+                  to={cs.link}
+                  className="block border-gradient p-1 rounded-lg h-full flex flex-col transition-transform duration-200 hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[var(--border-primary)]"
+                  style={{
+                    position: 'relative',
+                    borderRadius: '0.5rem',
+                    background: 'linear-gradient(var(--bg-secondary), var(--bg-secondary)) padding-box, linear-gradient(90deg, var(--border-primary), var(--border-secondary)) border-box',
+                    border: '1px solid transparent',
+                    minHeight: 420,
+                    textDecoration: 'none'
+                  }}
+                  tabIndex={0}
+                >
+                  <div className="p-6 rounded-md flex flex-col h-full" style={{ background: 'var(--bg-secondary)' }}>
+                    <div
+                      className="project-image mb-6"
+                      style={{
+                        height: '200px',
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        borderRadius: '0.375rem',
+                        backgroundImage: `url('${cs.image}')`
+                      }}
+                    ></div>
+                    <div className="flex flex-col md:flex-row justify-between mb-2">
+                      <h3 className="text-xl font-medium mb-2 md:mb-0" style={{ color: 'var(--text-primary)' }}>{cs.title}</h3>
+                    </div>
+                    {/* Other Case Studies tags */}
+                    <div className="flex flex-wrap gap-2">
+                      {cs.tags.map((tag, i) => (
+                        <span key={i} className="inline-block bg-white/10 text-[var(--text-primary)] px-3 py-1 rounded-full text-xs font-semibold tracking-wide uppercase border border-[var(--border-primary)]">{tag}</span>
+                      ))}
+                    </div>
+                    <p className="body-text mb-6 flex-1" style={{
+                      fontSize: 'clamp(14px, 2vw, 16px)',
+                      fontWeight: 460,
+                      lineHeight: 1.5,
+                      color: 'var(--text-secondary)'
+                    }}>
+                      {cs.description}
+                    </p>
+                    <div className="flex items-center justify-between mt-auto">
+                      <span className="btn-text" style={{
+                        fontSize: '14px',
+                        fontWeight: 560,
+                        color: 'var(--text-primary)'
+                      }}>
+                        View Case Study
+                      </span>
+                      <div className="flex flex-col items-end">
+                        <span style={{ color: 'var(--text-tertiary)', fontSize: '13px', fontWeight: 500, marginLeft: '1rem' }}>{cs.company}</span>
+                        <span style={{ color: 'var(--text-tertiary)', fontSize: '13px', fontWeight: 400 }}>{cs.year}</span>
+                      </div>
+                    </div>
                   </div>
-                  <p className="body-text mb-6" style={{
-                    fontSize: 'clamp(14px, 2vw, 16px)',
-                    fontWeight: 460,
-                    lineHeight: 1.5,
-                    color: 'var(--text-secondary)'
-                  }}>
-                    An immersive digital experience blending 3D environments with intuitive user interfaces. Built using Three.js and WebGL to create seamless interactions.
-                  </p>
-                  <Link to="/case-study/prism" className="btn-text" style={{
-                    fontSize: '14px',
-                    fontWeight: 560,
-                    color: 'var(--text-primary)'
-                  }}>
-                    View Case Study
-                  </Link>
-                </div>
-              </div>
+                </Link>
+              ))}
             </div>
           </section>
 
@@ -476,59 +550,20 @@ const Portfolio = () => {
           </section>
 
           {/* Footer */}
-          <footer>
-            <div className="divider mb-12" style={{
-              height: '1px',
-              background: 'linear-gradient(to right, var(--border-secondary), var(--border-primary), var(--border-secondary))'
-            }}></div>
-            <div className="flex flex-col md:flex-row justify-between items-start">
-              <div className="mb-8 md:mb-0">
-                <h3 className="font-medium mb-4" style={{ color: 'var(--text-primary)' }}>James Young</h3>
-                <p className="body-text max-w-xs" style={{
-                  fontSize: 'clamp(14px, 2vw, 16px)',
-                  fontWeight: 460,
-                  lineHeight: 1.5,
-                  color: 'var(--text-tertiary)'
-                }}>
-                  Product designer and AI prompt engineer with 25 years of UX experience, specializing in healthcare and emerging technologies.
-                </p>
-              </div>
-              <div className="grid grid-cols-2 gap-8">
-                <div>
-                  <h4 className="font-medium mb-4" style={{ color: 'var(--text-primary)' }}>Contact</h4>
-                  <a href="mailto:hello@example.com" className="body-text block mb-2" style={{
-                    fontSize: 'clamp(14px, 2vw, 16px)',
-                    fontWeight: 460,
-                    lineHeight: 1.5,
-                    color: 'var(--text-tertiary)'
-                  }}>hello@example.com</a>
-                </div>
-                <div>
-                  <h4 className="font-medium mb-4" style={{ color: 'var(--text-primary)' }}>Social</h4>
-                  <a href="https://www.linkedin.com/in/jyoung2k/" target="_blank" rel="noopener noreferrer" className="body-text block mb-2" style={{
-                    fontSize: 'clamp(14px, 2vw, 16px)',
-                    fontWeight: 460,
-                    lineHeight: 1.5,
-                    color: 'var(--text-tertiary)'
-                  }}>LinkedIn</a>
-                  <a href="https://github.com/JamesYoungUX" target="_blank" rel="noopener noreferrer" className="body-text block" style={{
-                    fontSize: 'clamp(14px, 2vw, 16px)',
-                    fontWeight: 460,
-                    lineHeight: 1.5,
-                    color: 'var(--text-tertiary)'
-                  }}>GitHub</a>
-                </div>
-              </div>
-            </div>
-            <div className="mt-16 text-center body-text" style={{
-              fontSize: 'clamp(14px, 2vw, 16px)',
-              fontWeight: 460,
-              lineHeight: 1.5,
-              color: 'var(--text-tertiary)'
-            }}>
-              © 2025 James Young. All rights reserved.
-            </div>
-          </footer>
+          <Footer />
+          {/* Back to Top Button */}
+          {showTopBtn && (
+            <button
+              onClick={handleScrollToTop}
+              aria-label="Back to top"
+              className="fixed bottom-8 right-8 z-50 bg-[var(--bg-secondary)] text-[var(--text-primary)] border border-[var(--border-primary)] rounded-full shadow-lg p-3 transition-opacity duration-300 hover:bg-[var(--bg-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--border-primary)]"
+              style={{ opacity: showTopBtn ? 1 : 0 }}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+              </svg>
+            </button>
+          )}
         </div>
       </div>
     </div>

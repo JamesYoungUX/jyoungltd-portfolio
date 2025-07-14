@@ -86,6 +86,16 @@ const CaseStudy = () => {
         <h2>Outcome</h2>
         <p>The experience received positive feedback for its innovative approach to blending 3D and UI design.</p>
       `
+    },
+    'resilience': {
+      title: 'Automating Patient-Therapist Alignment in the COVID-19 Recovery Era',
+      subtitle: 'UX Research, Product Design, Strategy, Leadership • 2022-2023',
+      image: 'https://images.unsplash.com/photo-1534972195531-d756b9bfa9f2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      description: 'As therapy organizations scaled rapidly in response to the mental health surge during and after the COVID-19 pandemic, Resilience Lab sought an efficient and equitable way to match patients with the right therapists. Manual assignment processes were time-consuming and unsustainable in a hybrid care model where both telehealth and in-person preferences had to be balanced. Recognizing the urgency—as demand spiked and business models shifted—I helped lead the design and prototyping of a system that would transform intake-to-assignment for staff, patients, and therapists alike.',
+      content: `
+        <h2>Project Overview</h2>
+        <p>As therapy organizations scaled rapidly in response to the mental health surge during and after the COVID-19 pandemic, Resilience Lab sought an efficient and equitable way to match patients with the right therapists. Manual assignment processes were time-consuming and unsustainable in a hybrid care model where both telehealth and in-person preferences had to be balanced. Recognizing the urgency—as demand spiked and business models shifted—I helped lead the design and prototyping of a system that would transform intake-to-assignment for staff, patients, and therapists alike.</p>
+      `
     }
   };
 
