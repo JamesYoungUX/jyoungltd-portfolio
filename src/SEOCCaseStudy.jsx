@@ -101,6 +101,17 @@ const SEOCCaseStudy = () => {
               </div>
             </div>
           </div>
+          {/* Key Contributions */}
+          <div className="mb-8">
+            <h3 className="text-lg font-semibold mb-2" style={{ color: 'var(--text-primary)' }}>Key Contributions</h3>
+            <ul className="list-disc pl-5" style={{ color: 'var(--text-secondary)' }}>
+              <li>Facilitated co-design workshops with clinical and administrative stakeholders</li>
+              <li>Developed a scalable design system with 20+ reusable components</li>
+              <li>Integrated AI-driven workflow automation and predictive analytics</li>
+              <li>Established robust documentation and accessibility guidelines</li>
+              <li>Designed task-oriented pages that guide users to focus on their highest priorities, reducing average time to complete key tasks from 37 minutes to less than 6 minutes</li>
+            </ul>
+          </div>
           <section className="mb-8">
             {/* Unsplash image for Project Overview */}
             <img
@@ -178,18 +189,34 @@ const SEOCCaseStudy = () => {
             />
             <h2 className="text-2xl font-semibold mb-2" style={{ color: 'var(--text-primary)' }}>Results</h2>
             <p style={{ color: 'var(--text-secondary)' }}>
-              The new SEOC management solution delivered significantly faster and more accurate workflows for clinical and administrative teams. By consolidating fragmented tools into a unified, intuitive platform, users were able to complete key tasks in less time and with fewer errors. Automated validation and standardized components reduced manual data entry mistakes, while clear, accessible interfaces improved user confidence and satisfaction. Early feedback from stakeholders highlighted a marked reduction in redundant work and fostered more trust and increased confidence among users. The design system’s robust documentation and reusable components also accelerated future development, enabling teams to quickly adapt and scale the solution as needs evolved. Ultimately, these improvements empowered the VA to deliver more consistent, high-quality care, while freeing up valuable time for both clinicians and administrators to focus on what matters most—serving Veterans.
+              The new SEOC management solution delivered significantly faster and more accurate workflows for clinical and administrative teams. By consolidating fragmented tools into a unified, intuitive platform, users were able to complete key tasks in less time and with fewer errors. Automated validation and standardized components reduced manual data entry mistakes, while clear, accessible interfaces improved user confidence and satisfaction.
+            </p>
+            <ul className="list-disc pl-5 mb-4" style={{ color: 'var(--text-secondary)' }}>
+              <li>Reduced manual effort by 30%</li>
+              <li>Improved usability by 62% and decreased cognitive load, as measured by task completion success and user feedback</li>
+              <li>Reduced average time to complete key tasks from 37 minutes to less than 6 minutes</li>
+              <li>Greatly improved the complexity and intuitiveness of medical coding SEOCs</li>
+              <li>Increased user confidence and trust</li>
+            </ul>
+            <p style={{ color: 'var(--text-secondary)' }}>
+              Early feedback from stakeholders highlighted a marked reduction in redundant work and fostered more trust and increased confidence among users. The design system’s robust documentation and reusable components also accelerated future development, enabling teams to quickly adapt and scale the solution as needs evolved. Ultimately, these improvements empowered the VA to deliver more consistent, high-quality care, while freeing up valuable time for both clinicians and administrators to focus on what matters most—serving Veterans.
             </p>
           </section>
           <section className="mb-8">
             <h2 className="text-2xl font-semibold mb-2" style={{ color: 'var(--text-primary)' }}>Reflections</h2>
             <p style={{ color: 'var(--text-secondary)' }}>
-              Leading design for the SEOC project was a transformative experience that reinforced the value of cross-disciplinary collaboration and design-led innovation in healthcare. One of the most significant lessons was the importance of engaging stakeholders early and often—co-design workshops and iterative feedback loops ensured the solution truly addressed user needs and organizational goals. Embracing the Double Diamond methodology provided a clear structure for navigating complexity, while the integration of AI-driven tools demonstrated how technology can amplify human expertise and streamline decision-making.
+              Leading design for the SEOC project was a transformative experience that challenged me to grow as a leader and collaborator. Navigating the complexities of healthcare and technology, I learned the value of patience, empathy, and clear communication. One of the most significant lessons was the importance of engaging stakeholders early and often—co-design workshops and iterative feedback loops ensured the solution truly addressed user needs and organizational goals. Embracing the Double Diamond methodology provided a clear structure for navigating complexity, while the integration of AI-driven tools demonstrated how technology can amplify human expertise and streamline decision-making.
             </p>
             <p style={{ color: 'var(--text-secondary)' }}>
-              The project also highlighted the necessity of robust documentation and scalable systems to support long-term growth and adaptability. Ultimately, this journey deepened my appreciation for the power of thoughtful design, agile teamwork, and the impact that a user-centered, data-informed approach can have on improving care delivery and operational efficiency.
+              The project also highlighted the necessity of robust documentation and scalable systems to support long-term growth and adaptability. This experience has shaped how I approach every new challenge—with curiosity, rigor, and a commitment to user-centered design. Ultimately, it deepened my appreciation for the power of thoughtful design, agile teamwork, and the impact that a user-centered, data-informed approach can have on improving care delivery and operational efficiency.
             </p>
           </section>
+          {/* Back to Case Studies button */}
+          <div className="mt-12 text-center">
+            <a href="/case-studies" className="btn-text px-6 py-3 rounded-md border" style={{ color: 'var(--text-primary)', borderColor: 'var(--border-primary)', fontWeight: 560, fontSize: '16px', textDecoration: 'none' }}>
+              ← Back to Case Studies
+            </a>
+          </div>
         </div>
       </div>
     </div>
