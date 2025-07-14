@@ -9,6 +9,7 @@ const resilienceData = {
   intro: 'Resilience Lab is a modern therapy collective leveraging data and design to deliver collaborative, high-quality mental healthcare. As pandemic restrictions eased and patient needs evolved, the company needed to automate and personalize back office operations to keep pace with growth and ensure clients found the right therapeutic match, whether virtual or in-person.',
   image: 'https://images.unsplash.com/photo-1534972195531-d756b9bfa9f2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
   platform: 'Web App, Internal Tool',
+  teamList: '1 Product Designer<br/>4 Engineers<br/>1 Data Scientist<br/>1 Product Manager',
   sections: [
     {
       heading: 'Overview',

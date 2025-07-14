@@ -9,6 +9,7 @@ const seocData = {
   intro: 'Leading a multidisciplinary team, I architected an intuitive solution streamlining the creation and management of SEOCs, driving both clinical and operational improvements.',
   image: 'https://images.unsplash.com/photo-1558655146-d09347e92766?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
   platform: 'Web App, Internal Software, AWS Healthcare Generative AI',
+  teamList: '1 Product Designer<br/>6 Engineers<br/>1 Data Scientist<br/>1 Business Analyst<br/>1 Product Manager',
   sections: [
     {
       heading: 'Project Overview',

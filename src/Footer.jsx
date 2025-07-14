@@ -11,19 +11,39 @@ const Footer = () => (
             <span className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">James Young</span>
           </a>
           <p className="max-w-xs text-gray-500 dark:text-gray-400 font-inter text-base">
-            Portfolio of James Young – building intelligent, modern web experiences with a focus on healthcare, design, and strategy.
+            Leading teams at the intersection of AI, design, and technology—advancing healthcare through innovative digital solutions and strategic vision.
           </p>
         </div>
         {/* Links */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 w-full md:w-auto">
-          <div>
+          <div className="min-w-0 w-full text-left">
             <h5 className="font-semibold mb-3 text-gray-800 dark:text-white">Portfolio</h5>
             <ul className="space-y-2 text-gray-500 dark:text-gray-400 font-inter">
               <li><a href="/" className="hover:text-blue-600 dark:hover:text-blue-300 transition-colors">Home</a></li>
-              <li><a href="#about" className="hover:text-blue-600 dark:hover:text-blue-300 transition-colors">About</a></li>
+              <li>
+                <a
+                  href="/"
+                  className="hover:text-blue-600 dark:hover:text-blue-300 transition-colors"
+                  onClick={e => {
+                    e.preventDefault();
+                    if (window.location.pathname === '/') {
+                      setTimeout(() => {
+                        const aboutSection = document.getElementById('about');
+                        if (aboutSection) {
+                          aboutSection.scrollIntoView({ behavior: 'smooth' });
+                        }
+                      }, 100);
+                    } else {
+                      window.location.href = '/#about';
+                    }
+                  }}
+                >
+                  About
+                </a>
+              </li>
             </ul>
           </div>
-          <div>
+          <div className="min-w-0 w-full text-left">
             <h5 className="font-semibold mb-3 text-gray-800 dark:text-white">Case Studies</h5>
             <ul className="space-y-2 text-gray-500 dark:text-gray-400 font-inter">
               <li><a href="/case-study/seoc" className="hover:text-blue-600 dark:hover:text-blue-300 transition-colors">SEOC</a></li>
@@ -31,7 +51,7 @@ const Footer = () => (
               <li><a href="/case-study/resilience" className="hover:text-blue-600 dark:hover:text-blue-300 transition-colors">Resilience Lab</a></li>
             </ul>
           </div>
-          <div>
+          <div className="min-w-0 w-full text-left">
             <h5 className="font-semibold mb-3 text-gray-800 dark:text-white">Connect</h5>
             <ul className="space-y-2 text-gray-500 dark:text-gray-400 font-inter">
               <li><a href="mailto:james@jyoung.co" className="hover:text-blue-600 dark:hover:text-blue-300 transition-colors">Email</a></li>
@@ -39,7 +59,7 @@ const Footer = () => (
               <li><a href="/resume" className="hover:text-blue-600 dark:hover:text-blue-300 transition-colors">Resume</a></li>
             </ul>
           </div>
-          <div>
+          <div className="min-w-0 w-full text-left">
             <h5 className="font-semibold mb-3 text-gray-800 dark:text-white">Location</h5>
             <ul className="space-y-2 text-gray-500 dark:text-gray-400 font-inter">
               <li><a href="#" className="hover:text-blue-600 dark:hover:text-blue-300 transition-colors">Orlando FL</a></li>

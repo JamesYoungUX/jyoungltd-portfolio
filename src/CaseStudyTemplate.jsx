@@ -10,7 +10,8 @@ const CaseStudyTemplate = ({
   intro,
   image,
   sections = [],
-  platform = ''
+  platform = '',
+  teamList = ''
 }) => (
   <div className="text-gray-300 transition-colors duration-300" style={{
     fontFamily: "'Bricolage Grotesque', sans-serif",
@@ -60,7 +61,7 @@ const CaseStudyTemplate = ({
             {/* Team (far right, spans both rows, aligned to top) */}
             <div style={{ gridColumn: '3', gridRow: '1 / span 2', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
               <div className="font-semibold mb-1" style={{ color: 'var(--text-primary)' }}>Team</div>
-              <div style={{ color: 'var(--text-secondary)' }}>6 Engineers<br/>1 Data Scientist<br/>1 Database Administrator<br/>1 Business Analyst<br/>1 Product Manager</div>
+              <div style={{ color: 'var(--text-secondary)' }} dangerouslySetInnerHTML={{ __html: teamList }} />
             </div>
             {/* Row 2 */}
             <div style={{ gridColumn: '1', gridRow: '2' }}>

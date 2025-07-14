@@ -9,6 +9,7 @@ const epsiData = {
   intro: `Enterprise Precision Scanning and Indexing (EPSI) is a secure, web-based platform developed for the Veterans Health Administration to facilitate the seamless intake and management of patient records received as faxes and converted to PDF files from external care providers. The application equips authorized VA personnel with the tools to efficiently attach submitted documents to the correct patient profile within the Veterans Health Information Systems and Technology Architecture (VistA). Throughout this process, EPSI not only supports rigorous data verification and secure storage protocols but also automates document retention and disposal in full alignment with federal privacy requirements. By bridging external records and VA systems, EPSI ensures that critical health information is accurately captured, easily accessible to care teams, and protected at every stage of its lifecycle.`,
   image: 'https://images.unsplash.com/photo-1545235617-9465d2a55698?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
   platform: 'Web App, Internal Software, AWS Healthcare Generative AI',
+  teamList: '1 Product Designer<br/>5 Engineers<br/>1 Data Scientist<br/>1 Business Analyst<br/>1 Product Manager',
   sections: [
     {
       heading: 'Project Overview',
