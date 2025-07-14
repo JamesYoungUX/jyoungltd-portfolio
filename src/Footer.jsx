@@ -49,6 +49,8 @@ const Footer = () => (
               <li><a href="/case-study/seoc" className="hover:text-blue-600 dark:hover:text-blue-300 transition-colors">SEOC</a></li>
               <li><a href="/case-study/epsi" className="hover:text-blue-600 dark:hover:text-blue-300 transition-colors">EPSI</a></li>
               <li><a href="/case-study/resilience" className="hover:text-blue-600 dark:hover:text-blue-300 transition-colors">Resilience Lab</a></li>
+              <li><a href="/case-study/pearl" className="hover:text-blue-600 dark:hover:text-blue-300 transition-colors">Pearl Health</a></li>
+              <li><a href="/case-study/ayva" className="hover:text-blue-600 dark:hover:text-blue-300 transition-colors">Ayva</a></li>
             </ul>
           </div>
           <div className="min-w-0 w-full text-left">

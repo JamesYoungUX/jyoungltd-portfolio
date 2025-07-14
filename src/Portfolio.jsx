@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
 
@@ -58,12 +58,22 @@ const Portfolio = () => {
   const [theme, setTheme] = useState('system');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showTopBtn, setShowTopBtn] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme') || 'system';
     setTheme(savedTheme);
     applyTheme(savedTheme);
   }, []);
+
+  useEffect(() => {
+    if (location.hash) {
+      const el = document.getElementById(location.hash.replace('#', ''));
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, [location]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -102,8 +112,6 @@ const Portfolio = () => {
     padding: '0.5rem 1rem',
     fontSize: '14px',
     display: 'inline-block',
-    marginRight: '0.5rem',
-    marginBottom: '0.5rem',
     cursor: 'pointer'
   };
 
@@ -293,7 +301,7 @@ const Portfolio = () => {
                 </p>
                 
                 <h3 className="text-xl font-medium mb-4" style={{ color: 'var(--text-primary)' }}>Skills</h3>
-                <div className="mb-8">
+                <div className="mb-8 grid grid-cols-2 gap-2 md:flex md:flex-wrap md:gap-2 md:justify-start">
                   <span className="skill-badge glass hover-lift" style={badgeStyle}>Servant Leadership</span>
                   <span className="skill-badge glass hover-lift" style={badgeStyle}>UX Leadership</span>
                   <span className="skill-badge glass hover-lift" style={badgeStyle}>Accessibility</span>
