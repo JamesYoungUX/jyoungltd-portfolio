@@ -102,11 +102,6 @@ const ResumeContent = React.forwardRef(function ResumeContent(props, ref) {
           <li>Sr. User Experience Architect (Consultant) at Harpo Productions (Oprah), Chicago, 2008 - 2010</li>
         </ul>
       </section>
-      {/* Print-only content */}
-      <div className="print-only" style={{ marginTop: 24, color: 'var(--text-primary)' }}>
-        <h2>References available upon request</h2>
-        <p>Email: jyoung2k@gmail.com | LinkedIn: linkedin.com/in/jyoung2k</p>
-      </div>
     </div>
   );
 });

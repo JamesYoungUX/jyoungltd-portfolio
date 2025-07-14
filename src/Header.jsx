@@ -38,7 +38,7 @@ const Header = () => {
       </div>
       {/* Desktop Navigation */}
       <nav className="hidden md:flex space-x-8 items-center">
-        <Link to="/case-studies" className="body-text hover:text-white transition-colors" style={{
+        <Link to="/case-studies" className="relative pb-1 border-b-2 border-transparent hover:border-current transition-all duration-200 body-text" style={{
           fontSize: 'clamp(14px, 2vw, 16px)',
           fontWeight: 460,
           lineHeight: 1.5,
@@ -55,7 +55,7 @@ const Header = () => {
               }
             }, 100);
           }}
-          className="body-text hover:text-white transition-colors"
+          className="relative pb-1 border-b-2 border-transparent hover:border-current transition-all duration-200 body-text"
           style={{
             fontSize: 'clamp(14px, 2vw, 16px)',
             fontWeight: 460,
@@ -65,19 +65,19 @@ const Header = () => {
         >
           About
         </Link>
-        <Link to="/resume" className="body-text hover:text-white transition-colors" style={{
+        <Link to="/resume" className="relative pb-1 border-b-2 border-transparent hover:border-current transition-all duration-200 body-text" style={{
           fontSize: 'clamp(14px, 2vw, 16px)',
           fontWeight: 460,
           lineHeight: 1.5,
           color: 'var(--text-secondary)'
         }}>Resume</Link>
-        <a href="#contact" className="body-text hover:text-white transition-colors" style={{
+        <a href="#contact" className="relative pb-1 border-b-2 border-transparent hover:border-current transition-all duration-200 body-text" style={{
           fontSize: 'clamp(14px, 2vw, 16px)',
           fontWeight: 460,
           lineHeight: 1.5,
           color: 'var(--text-secondary)'
         }}>Contact</a>
-        <a href="https://www.linkedin.com/in/jyoung2k/" target="_blank" rel="noopener noreferrer" className="body-text hover:text-white transition-colors" style={{
+        <a href="https://www.linkedin.com/in/jyoung2k/" target="_blank" rel="noopener noreferrer" className="relative pb-1 border-b-2 border-transparent hover:border-current transition-all duration-200 body-text" style={{
           fontSize: 'clamp(14px, 2vw, 16px)',
           fontWeight: 460,
           lineHeight: 1.5,
