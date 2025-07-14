@@ -310,8 +310,8 @@ const Portfolio = () => {
                     backgroundImage: 'url("https://images.unsplash.com/photo-1558655146-d09347e92766?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80")'
                   }}></div>
                   <div className="flex flex-col md:flex-row justify-between mb-4">
-                    <h3 className="text-xl font-medium mb-2 md:mb-0" style={{ color: 'var(--text-primary)' }}>Aurora - Web Platform</h3>
-                    <span style={{ color: 'var(--text-tertiary)' }}>UI/UX Design, Development • 2023</span>
+                    <h3 className="text-xl font-medium mb-2 md:mb-0" style={{ color: 'var(--text-primary)' }}>AI Powered Workflow to Enhance Standardized Episodes of Care (SEOC)</h3>
+                    <span style={{ color: 'var(--text-tertiary)' }}>AI, Healthcare Innovation • 2024–2025</span>
                   </div>
                   <p className="body-text mb-6" style={{
                     fontSize: 'clamp(14px, 2vw, 16px)',
@@ -319,9 +319,9 @@ const Portfolio = () => {
                     lineHeight: 1.5,
                     color: 'var(--text-secondary)'
                   }}>
-                    A complete redesign of a financial platform with focus on data visualization and intuitive workflows. Created responsive interfaces and implemented with React and Tailwind CSS.
+                    Leading a multidisciplinary team, I architected an intuitive solution streamlining the creation and management of SEOCs, driving both clinical and operational improvements.
                   </p>
-                  <Link to="/case-study/aurora" className="btn-text" style={{
+                  <Link to="/case-study/seoc" className="btn-text" style={{
                     fontSize: '14px',
                     fontWeight: 560,
                     color: 'var(--text-primary)'
