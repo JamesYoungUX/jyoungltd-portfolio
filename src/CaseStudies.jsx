@@ -5,6 +5,7 @@ import Header from './Header';
 const caseStudies = [
   {
     title: 'AI Powered Workflow to Enhance Standardized Episodes of Care (SEOC)',
+    company: 'Veterans Affairs',
     description: 'Leading a multidisciplinary team, I architected an intuitive solution streamlining the creation and management of SEOCs, driving both clinical and operational improvements.',
     link: '/case-study/seoc',
     image: 'https://images.unsplash.com/photo-1558655146-d09347e92766?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
@@ -12,20 +13,40 @@ const caseStudies = [
     year: '2024–2025',
   },
   {
-    title: 'Nebula Design System',
-    description: 'A comprehensive design system created for a suite of enterprise applications. Developed component library with documentation and implemented accessibility standards.',
+    title: 'AI-Powered Healthcare Dashboard Form Intake (EPSI)',
+    company: 'Veterans Affairs',
+    description: 'Designed and delivered an advanced AI-powered dashboard for the VA, streamlining form intake and clinical workflows for EPSI. Focused on accessibility, data integrity, and seamless user experience for healthcare professionals.',
     link: '/case-study/nebula',
     image: 'https://images.unsplash.com/photo-1545235617-9465d2a55698?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    tags: ['Design System', 'Front-end'],
-    year: '2022',
+    tags: ['AI', 'Healthcare', 'Dashboard', 'UX'],
+    year: '2023',
   },
   {
     title: 'Prism 3D Experience',
+    company: 'Bravado Health',
     description: 'An immersive digital experience blending 3D environments with intuitive user interfaces. Built using Three.js and WebGL to create seamless interactions.',
     link: '/case-study/prism',
     image: 'https://images.unsplash.com/photo-1534972195531-d756b9bfa9f2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
     tags: ['3D Design', 'Interactive Development'],
     year: '2022',
+  },
+  {
+    title: 'Transforming Value-Based Care Through Design-Driven Innovation',
+    company: 'Pearl Health',
+    description: 'Led the design and strategy for Pearl Health’s value-based care platform, empowering providers with actionable insights and intuitive workflows to improve patient outcomes and operational efficiency.',
+    link: '/case-study/pearl',
+    image: 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=800&q=80',
+    tags: ['Healthcare', 'Value-Based Care', 'Product Design'],
+    year: '2022',
+  },
+  {
+    title: 'Ayva: Redesigning Surgical Care With a Digital Assistant',
+    company: 'Bravado Health',
+    description: 'Reimagined the surgical care experience by designing Ayva, a digital assistant that guides patients and care teams through pre- and post-operative workflows, improving adherence and satisfaction.',
+    link: '/case-study/ayva',
+    image: 'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=800&q=80',
+    tags: ['Digital Health', 'AI', 'Patient Experience'],
+    year: '2021',
   },
 ];
 
@@ -139,13 +160,19 @@ const CaseStudies = () => {
               }}>
                 {featured.description}
               </p>
-              <Link to={featured.link} className="btn-text mt-auto" style={{
-                fontSize: '14px',
-                fontWeight: 560,
-                color: 'var(--text-primary)'
-              }}>
-                View Case Study
-              </Link>
+              <div className="flex items-center justify-between mt-auto">
+                <Link to={featured.link} className="btn-text" style={{
+                  fontSize: '18px',
+                  fontWeight: 700,
+                  color: 'var(--text-primary)',
+                  letterSpacing: '0.01em',
+                  textDecoration: 'underline',
+                  marginRight: '1.5rem'
+                }}>
+                  View Case Study
+                </Link>
+                <span style={{ color: 'var(--text-primary)', fontSize: '18px', fontWeight: 700, letterSpacing: '0.01em' }}>{featured.company}</span>
+              </div>
             </div>
           </div>
           {/* Remaining Case Studies in 2-column grid */}
@@ -185,13 +212,16 @@ const CaseStudies = () => {
                   }}>
                     {cs.description}
                   </p>
-                  <Link to={cs.link} className="btn-text mt-auto" style={{
-                    fontSize: '14px',
-                    fontWeight: 560,
-                    color: 'var(--text-primary)'
-                  }}>
-                    View Case Study
-                  </Link>
+                  <div className="flex items-center justify-between mt-auto">
+                    <Link to={cs.link} className="btn-text" style={{
+                      fontSize: '14px',
+                      fontWeight: 560,
+                      color: 'var(--text-primary)'
+                    }}>
+                      View Case Study
+                    </Link>
+                    <span style={{ color: 'var(--text-tertiary)', fontSize: '13px', fontWeight: 500, marginLeft: '1rem' }}>{cs.company}</span>
+                  </div>
                 </div>
               </div>
             ))}

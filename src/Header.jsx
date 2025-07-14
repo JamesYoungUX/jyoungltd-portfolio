@@ -38,12 +38,6 @@ const Header = () => {
       </div>
       {/* Desktop Navigation */}
       <nav className="hidden md:flex space-x-8 items-center">
-        <Link to="/case-studies" className="relative pb-1 border-b-2 border-transparent hover:border-current transition-all duration-200 body-text" style={{
-          fontSize: 'clamp(14px, 2vw, 16px)',
-          fontWeight: 460,
-          lineHeight: 1.5,
-          color: 'var(--text-secondary)'
-        }}>Case Studies</Link>
         <Link
           to="/"
           onClick={e => {
@@ -65,6 +59,12 @@ const Header = () => {
         >
           About
         </Link>
+        <Link to="/case-studies" className="relative pb-1 border-b-2 border-transparent hover:border-current transition-all duration-200 body-text" style={{
+          fontSize: 'clamp(14px, 2vw, 16px)',
+          fontWeight: 460,
+          lineHeight: 1.5,
+          color: 'var(--text-secondary)'
+        }}>Case Studies</Link>
         <Link to="/resume" className="relative pb-1 border-b-2 border-transparent hover:border-current transition-all duration-200 body-text" style={{
           fontSize: 'clamp(14px, 2vw, 16px)',
           fontWeight: 460,
