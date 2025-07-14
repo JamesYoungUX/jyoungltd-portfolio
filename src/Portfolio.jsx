@@ -251,15 +251,23 @@ const Portfolio = () => {
                     <h3 className="text-xl font-medium mb-4" style={{ color: 'var(--text-primary)' }}>Experience</h3>
                     <div className="mb-6">
                       <div className="font-medium" style={{ color: 'var(--text-primary)' }}>Principal Clinical Product Designer</div>
-                      <div style={{ color: 'var(--text-tertiary)' }}>VA Healthcare • 2016-Present</div>
+                      <div style={{ color: 'var(--text-tertiary)' }}>Veteran Affairs • 2016–Present</div>
                     </div>
                     <div className="mb-6">
-                      <div className="font-medium" style={{ color: 'var(--text-primary)' }}>AI Prompt Engineer</div>
-                      <div style={{ color: 'var(--text-tertiary)' }}>Tech Innovation • 2020-2023</div>
+                      <div className="font-medium" style={{ color: 'var(--text-primary)' }}>Lead (Staff) User Experience/Architect</div>
+                      <div style={{ color: 'var(--text-tertiary)' }}>Signify Health/CVS Healthcare • 2023–2025</div>
+                    </div>
+                    <div className="mb-6">
+                      <div className="font-medium" style={{ color: 'var(--text-primary)' }}>Principal User Experience, Director of Product Design</div>
+                      <div style={{ color: 'var(--text-tertiary)' }}>Resilience Lab • 2022–2023</div>
                     </div>
                     <div className="mb-6">
                       <div className="font-medium" style={{ color: 'var(--text-primary)' }}>Principal Product Designer</div>
-                      <div style={{ color: 'var(--text-tertiary)' }}>Pearl Health • 2020-2021</div>
+                      <div style={{ color: 'var(--text-tertiary)' }}>Pearl Health • 2021–2022</div>
+                    </div>
+                    <div className="mb-6">
+                      <div className="font-medium" style={{ color: 'var(--text-primary)' }}>Senior Director User Experience</div>
+                      <div style={{ color: 'var(--text-tertiary)' }}>Bravado Health • 2017–2021</div>
                     </div>
                     <div>
                       <div className="font-medium" style={{ color: 'var(--text-primary)' }}>Total Experience</div>
