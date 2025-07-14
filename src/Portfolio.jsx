@@ -490,65 +490,6 @@ const Portfolio = () => {
 
 
 
-          {/* Contact Section */}
-          <section id="contact" className="mb-32">
-            <h2 className="subheading mb-8" style={{
-              fontSize: 'clamp(28px, 5vw, 36px)',
-              fontWeight: 424,
-              letterSpacing: '-0.04em',
-              lineHeight: 1.2,
-              color: 'var(--text-primary)'
-            }}>Let's connect</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-              <div>
-                <p className="body-text mb-8" style={{
-                  fontSize: 'clamp(14px, 2vw, 16px)',
-                  fontWeight: 460,
-                  lineHeight: 1.5,
-                  color: 'var(--text-secondary)'
-                }}>
-                  I'm always open to discussing new projects, creative ideas or opportunities to be part of your vision.
-                </p>
-                <a href="mailto:hello@example.com" className="border px-6 py-3 rounded-md btn-text hover:bg-gray-200 transition-colors inline-block" style={{
-                  fontSize: '14px',
-                  fontWeight: 560,
-                  color: '#000000',
-                  background: '#ffffff',
-                  borderColor: '#000000'
-                }}>
-                  Get in Touch
-                </a>
-              </div>
-              <div className="border-gradient p-1" style={{
-                position: 'relative',
-                borderRadius: '0.5rem',
-                background: 'linear-gradient(var(--bg-secondary), var(--bg-secondary)) padding-box, linear-gradient(90deg, var(--border-primary), var(--border-secondary)) border-box',
-                border: '1px solid transparent'
-              }}>
-                <div className="p-6 rounded-md" style={{ background: 'var(--bg-secondary)' }}>
-                  <h3 className="text-xl font-medium mb-6" style={{ color: 'var(--text-primary)' }}>Contact Information</h3>
-                  <div className="mb-4">
-                    <div className="mb-1" style={{ color: 'var(--text-tertiary)' }}>Email</div>
-                    <a href="mailto:hello@example.com" style={{ color: 'var(--text-primary)' }}>hello@example.com</a>
-                  </div>
-                  <div className="mb-4">
-                    <div className="mb-1" style={{ color: 'var(--text-tertiary)' }}>Location</div>
-                    <div style={{ color: 'var(--text-primary)' }}>Orlando, FL</div>
-                  </div>
-                  <div>
-                    <div className="mb-3" style={{ color: 'var(--text-tertiary)' }}>Social</div>
-                    <div className="flex space-x-4">
-                      <a href="#" style={{ color: 'var(--text-primary)' }} className="hover:text-gray-300">Twitter</a>
-                      <a href="https://www.linkedin.com/in/jyoung2k/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-primary)' }} className="hover:text-gray-300">LinkedIn</a>
-                      <a href="#" style={{ color: 'var(--text-primary)' }} className="hover:text-gray-300">Dribbble</a>
-                      <a href="https://github.com/JamesYoungUX" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-primary)' }} className="hover:text-gray-300">GitHub</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-
           {/* Footer */}
           <Footer />
           {/* Back to Top Button */}
