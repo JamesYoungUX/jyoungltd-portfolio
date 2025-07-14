@@ -180,7 +180,7 @@ const Header = () => {
           {/* Backdrop */}
           <div className="absolute inset-0 bg-black/40" onClick={toggleMobileMenu} />
           {/* Dropdown Sheet */}
-          <div className="absolute left-0 top-0 w-full bg-white dark:bg-black shadow-xl rounded-b-3xl p-8 pt-6 flex flex-col gap-6 animate-slideDown">
+          <div className="mobile-menu-dropdown absolute left-0 top-0 w-full bg-white dark:bg-gray-900 shadow-xl rounded-b-3xl p-8 pt-6 flex flex-col gap-6 animate-slideDown">
             <button
               onClick={toggleMobileMenu}
               className="self-end mb-2 p-2 rounded-md hover:bg-gray-200 dark:hover:bg-gray-800"
