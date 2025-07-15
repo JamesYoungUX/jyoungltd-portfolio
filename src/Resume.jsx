@@ -1,6 +1,5 @@
 import React, { useRef } from 'react';
 import Header from './Header';
-import { useReactToPrint } from 'react-to-print';
 
 const ResumeContent = React.forwardRef(function ResumeContent(props, ref) {
   return (
@@ -108,10 +107,6 @@ const ResumeContent = React.forwardRef(function ResumeContent(props, ref) {
 
 const Resume = () => {
   const componentRef = useRef();
-  const handlePrint = useReactToPrint({
-    content: () => componentRef.current,
-    documentTitle: 'A_James_Young_Resume',
-  });
 
   return (
     <div className="resume-page" style={{ fontFamily: "'Bricolage Grotesque', sans-serif", margin: 0, padding: 0, background: 'var(--bg-primary)', color: 'var(--text-secondary)' }}>
@@ -122,7 +117,7 @@ const Resume = () => {
             <button
               className="border px-4 py-2 rounded-md btn-text hover:bg-gray-200 transition-colors"
               style={{ color: '#000', background: '#fff', borderColor: '#000' }}
-              onClick={handlePrint}
+              onClick={() => window.print()}
             >
               Download PDF Resume
             </button>
