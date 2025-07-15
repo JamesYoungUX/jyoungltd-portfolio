@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useTheme } from './ThemeProvider';
 import { Link, useNavigate } from 'react-router-dom';
-import NavLinks from './NavLinks';
 
 const Header = () => {
   const { theme, setTheme } = useTheme();
@@ -23,9 +22,44 @@ const Header = () => {
           <Link to="/" className="font-medium text-xl text-primary no-underline">James Young</Link>
         </div>
         {/* Desktop Navigation */}
-        <NavLinks layoutClass="hidden md:grid grid-flow-col gap-8 items-center" />
+        <nav className="hidden md:flex space-x-8 items-center">
+          <Link
+            to="/"
+            onClick={e => {
+              // Delay scroll to allow navigation
+              setTimeout(() => {
+                const aboutSection = document.getElementById('about');
+                if (aboutSection) {
+                  aboutSection.scrollIntoView({ behavior: 'smooth' });
+                }
+              }, 100);
+            }}
+            className="relative pb-1 border-b-2 border-transparent hover:border-current transition-all duration-200 body-text text-base font-semibold leading-6 text-secondary"
+          >
+            About
+          </Link>
+          <button
+            className="relative pb-1 border-b-2 border-transparent hover:border-current transition-all duration-200 body-text bg-transparent cursor-pointer text-base font-semibold leading-6 text-secondary"
+            onClick={() => {
+              navigate('/');
+              setTimeout(() => {
+                const section = document.getElementById('projects');
+                if (section) {
+                  section.scrollIntoView({ behavior: 'smooth' });
+                }
+              }, 100);
+            }}
+          >
+            Case Studies
+          </button>
+          <Link to="/resume" className="relative pb-1 border-b-2 border-transparent hover:border-current transition-all duration-200 body-text text-base font-semibold leading-6 text-secondary">Resume</Link>
+          <a href="#contact" className="relative pb-1 border-b-2 border-transparent hover:border-current transition-all duration-200 body-text text-base font-semibold leading-6 text-secondary">Contact</a>
+          <a href="https://www.linkedin.com/in/jyoung2k/" target="_blank" rel="noopener noreferrer" className="relative pb-1 border-b-2 border-transparent hover:border-current transition-all duration-200 body-text text-base font-semibold leading-6 text-secondary">
+            LinkedIn &rarr;
+          </a>
+        </nav>
         {/* Theme Toggle */}
-          <div className="relative">
+        <div className="relative">
             <button
               onClick={() => handleThemeChange(theme === 'dark' ? 'light' : theme === 'light' ? 'system' : 'dark')}
               className="p-2 rounded-md hover:bg-gray-800 transition-colors"
@@ -98,7 +132,45 @@ const Header = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
-            <NavLinks layoutClass="flex flex-col gap-4 mt-2" onAboutClick={toggleMobileMenu} />
+            <nav className="flex flex-col gap-4 mt-2">
+              <Link to="/" onClick={toggleMobileMenu} className="text-xl font-semibold hover:text-blue-600 dark:hover:text-blue-300">Home</Link>
+              <button
+                onClick={() => {
+                  toggleMobileMenu();
+                  if (window.location.pathname === '/') {
+                    setTimeout(() => {
+                      const aboutSection = document.getElementById('about');
+                      if (aboutSection) {
+                        aboutSection.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }, 100);
+                  } else {
+                    window.location.href = '/#about';
+                  }
+                }}
+                className="text-xl font-semibold text-left hover:text-blue-600 dark:hover:text-blue-300 bg-transparent border-none p-0"
+              >
+                About
+              </button>
+              <button
+                onClick={() => {
+                  navigate('/');
+                  toggleMobileMenu();
+                  setTimeout(() => {
+                    const section = document.getElementById('projects');
+                    if (section) {
+                      section.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }, 100);
+                }}
+                className="text-xl font-semibold text-left hover:text-blue-600 dark:hover:text-blue-300 bg-transparent border-none p-0"
+              >
+                Case Studies
+              </button>
+              <Link to="/resume" onClick={toggleMobileMenu} className="text-xl font-semibold hover:text-blue-600 dark:hover:text-blue-300">Resume</Link>
+              <a href="#contact" onClick={toggleMobileMenu} className="text-xl font-semibold hover:text-blue-600 dark:hover:text-blue-300">Contact</a>
+              <a href="https://www.linkedin.com/in/jyoung2k/" target="_blank" rel="noopener noreferrer" onClick={toggleMobileMenu} className="text-xl font-semibold hover:text-blue-600 dark:hover:text-blue-300">LinkedIn &rarr;</a>
+            </nav>
           </div>
         </div>
       )}
