@@ -177,7 +177,7 @@ const Portfolio = () => {
         zIndex: 10,
         background: 'linear-gradient(to bottom, var(--bg-secondary), var(--bg-tertiary))'
       }}>
-        <div className="max-w-3xl md:max-w-4xl lg:max-w-5xl xl:max-w-6xl mx-auto px-4 py-16">
+        <div className="max-w-3xl md:max-w-4xl lg:max-w-5xl xl:max-w-6xl 2xl:max-w-7xl mx-auto px-4 py-16">
           {/* Header */}
           <Header />
 

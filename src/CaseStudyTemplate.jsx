@@ -95,7 +95,7 @@ const CaseStudyTemplate = ({
           </section>
         ))}
       </div>
-      <div className="max-w-3xl md:max-w-4xl lg:max-w-5xl xl:max-w-6xl mx-auto px-4">
+      <div className="max-w-3xl md:max-w-4xl lg:max-w-5xl xl:max-w-6xl 2xl:max-w-7xl mx-auto px-4">
         <Footer />
       </div>
     </div>

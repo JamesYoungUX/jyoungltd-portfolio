@@ -110,7 +110,7 @@ const Resume = () => {
 
   return (
     <div className="resume-page" style={{ fontFamily: "'Bricolage Grotesque', sans-serif", margin: 0, padding: 0, background: 'var(--bg-primary)', color: 'var(--text-secondary)' }}>
-      <div className="max-w-3xl md:max-w-4xl lg:max-w-5xl xl:max-w-6xl mx-auto px-4 py-16">
+      <div className="max-w-3xl md:max-w-4xl lg:max-w-5xl xl:max-w-6xl 2xl:max-w-7xl mx-auto px-4 py-16">
         <Header />
         <div className="mb-8 no-print">
           <div className="mt-2">

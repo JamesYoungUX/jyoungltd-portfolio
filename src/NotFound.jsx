@@ -5,7 +5,7 @@ import Header from './Header';
 const NotFound = () => (
   <div className="text-gray-300 transition-colors duration-300" style={{ fontFamily: "'Bricolage Grotesque', sans-serif", margin: 0, overflowX: 'hidden', backgroundColor: 'var(--bg-primary)', color: 'var(--text-secondary)' }}>
     <div className="content min-h-screen transition-colors duration-300" style={{ position: 'relative', zIndex: 10, background: 'linear-gradient(to bottom, var(--bg-secondary), var(--bg-tertiary))' }}>
-      <div className="max-w-3xl md:max-w-4xl lg:max-w-5xl xl:max-w-6xl mx-auto px-4 py-16">
+      <div className="max-w-3xl md:max-w-4xl lg:max-w-5xl xl:max-w-6xl 2xl:max-w-7xl mx-auto px-4 py-16">
         <Header />
         <div className="flex flex-col items-center justify-center" style={{ marginTop: '4rem' }}>
           <h1 className="text-5xl font-bold mb-4">404</h1>
