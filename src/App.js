@@ -6,8 +6,8 @@ import Resume from './Resume';
 import NotFound from './NotFound';
 import EPSICaseStudy from './EPSICaseStudy';
 import ResilienceCaseStudy from './ResilienceCaseStudy';
-import CaseStudyPearl from './CaseStudyPearl';
-import CaseStudyAyva from './CaseStudyAyva';
+import PearlCaseStudy from './PearlCaseStudy';
+import AyvaCaseStudy from './AyvaCaseStudy';
 import './Portfolio.css';
 
 function ScrollToTop() {
@@ -27,8 +27,8 @@ function App() {
         <Route path="/case-study/seoc" element={<SEOCCaseStudy />} />
         <Route path="/case-study/epsi" element={<EPSICaseStudy />} />
         <Route path="/case-study/resilience" element={<ResilienceCaseStudy />} />
-        <Route path="/case-study/pearl" element={<CaseStudyPearl />} />
-        <Route path="/case-study/ayva" element={<CaseStudyAyva />} />
+        <Route path="/case-study/pearl" element={<PearlCaseStudy />} />
+        <Route path="/case-study/ayva" element={<AyvaCaseStudy />} />
         <Route path="/resume" element={<Resume />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

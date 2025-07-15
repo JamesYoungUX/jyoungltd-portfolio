@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { useTheme } from './ThemeProvider';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 const Header = () => {
   const { theme, setTheme } = useTheme();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleThemeChange = (newTheme) => {
     setTheme(newTheme);
@@ -18,18 +19,18 @@ const Header = () => {
   // DRY header nav links array
   const headerLinks = [
     {
-      type: 'anchor',
+      type: 'link',
       label: 'About',
-      href: '#about',
+      to: '/#about',
       className: 'relative pb-1 border-b-2 border-transparent hover:border-current transition-all duration-200 body-text text-base font-semibold leading-6 text-secondary',
       onClick: (e) => {
-        e.preventDefault();
-        setTimeout(() => {
+        if (location.pathname === '/' && location.hash !== '#about') {
+          e.preventDefault();
           const aboutSection = document.getElementById('about');
           if (aboutSection) {
             aboutSection.scrollIntoView({ behavior: 'smooth' });
           }
-        }, 100);
+        }
       }
     },
     {
