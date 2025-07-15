@@ -1,13 +1,9 @@
 import React, { useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Portfolio from './Portfolio';
-import SEOCCaseStudy from './SEOCCaseStudy';
 import Resume from './Resume';
 import NotFound from './NotFound';
-import EPSICaseStudy from './EPSICaseStudy';
-import ResilienceCaseStudy from './ResilienceCaseStudy';
-import PearlCaseStudy from './PearlCaseStudy';
-import AyvaCaseStudy from './AyvaCaseStudy';
+import CaseStudyPage from './CaseStudyPage';
 import './Portfolio.css';
 
 function ScrollToTop() {
@@ -24,11 +20,7 @@ function App() {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Portfolio />} />
-        <Route path="/case-study/seoc" element={<SEOCCaseStudy />} />
-        <Route path="/case-study/epsi" element={<EPSICaseStudy />} />
-        <Route path="/case-study/resilience" element={<ResilienceCaseStudy />} />
-        <Route path="/case-study/pearl" element={<PearlCaseStudy />} />
-        <Route path="/case-study/ayva" element={<AyvaCaseStudy />} />
+        <Route path="/case-study/:id" element={<CaseStudyPage />} />
         <Route path="/resume" element={<Resume />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

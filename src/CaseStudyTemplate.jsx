@@ -113,7 +113,7 @@ const CaseStudyTemplate = ({
   </div>
 );
 
-CaseStudyTemplate.propTypes = {
+export const caseStudyPropTypes = {
   title: PropTypes.string.isRequired,
   company: PropTypes.string.isRequired,
   year: PropTypes.oneOfType([
@@ -135,5 +135,7 @@ CaseStudyTemplate.propTypes = {
   role: PropTypes.string,
   methodology: PropTypes.string
 };
+
+CaseStudyTemplate.propTypes = caseStudyPropTypes;
 
 export default CaseStudyTemplate; 
