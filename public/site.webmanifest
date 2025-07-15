@@ -9,8 +9,13 @@
   "icons": [
     {
       "src": "/favicon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml"
+      "type": "image/svg+xml",
+      "sizes": "64x64"
+    },
+    {
+      "src": "/favicon.png",
+      "type": "image/png",
+      "sizes": "64x64"
     }
   ]
 } 
