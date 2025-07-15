@@ -16,13 +16,10 @@ const ImageUpload = () => {
     setDebugInfo(null);
 
     try {
-      console.log('Starting upload for file:', file.name);
       
       const result = await uploadImage(file, 'portfolio');
       setUploadedImage(result);
-      console.log('Upload successful:', result);
     } catch (err) {
-      console.error('Upload error details:', err);
       setError(`Upload failed: ${err.message}`);
       setDebugInfo({
         message: err.message,
@@ -36,7 +33,7 @@ const ImageUpload = () => {
   return (
     <div className="p-6 rounded-md" style={{ background: 'var(--bg-secondary)' }}>
       <h3 className="text-xl font-medium mb-4" style={{ color: 'var(--text-primary)' }}>
-        Image Upload Test
+        Image Upload
       </h3>
       
       <input

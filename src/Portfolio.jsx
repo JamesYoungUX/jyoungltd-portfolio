@@ -58,12 +58,38 @@ const Portfolio = () => {
   const [theme, setTheme] = useState('system');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showTopBtn, setShowTopBtn] = useState(false);
+  const [systemPrefersDark, setSystemPrefersDark] = useState(() => window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  const [activeTheme, setActiveTheme] = useState(() => document.documentElement.getAttribute('data-theme') || 'system');
   const location = useLocation();
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme') || 'system';
     setTheme(savedTheme);
     applyTheme(savedTheme);
+  }, []);
+
+  useEffect(() => {
+    if (!window.matchMedia) return;
+    const media = window.matchMedia('(prefers-color-scheme: dark)');
+    const listener = (e) => {
+      setSystemPrefersDark(e.matches);
+      if (theme === 'system') {
+        applyTheme('system');
+      }
+    };
+    media.addEventListener('change', listener);
+    return () => media.removeEventListener('change', listener);
+  }, [theme]);
+
+  // MutationObserver to track data-theme changes
+  useEffect(() => {
+    const observer = new MutationObserver(() => {
+      setActiveTheme(document.documentElement.getAttribute('data-theme') || 'system');
+    });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+    // Set initial value
+    setActiveTheme(document.documentElement.getAttribute('data-theme') || 'system');
+    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
@@ -115,6 +141,9 @@ const Portfolio = () => {
     cursor: 'pointer'
   };
 
+  // Helper to determine if dark mode is active
+  const isDarkMode = activeTheme === 'dark';
+
   return (
     <div className="text-gray-300 transition-colors duration-300" style={{ 
       fontFamily: "'Bricolage Grotesque', sans-serif", 
@@ -123,23 +152,26 @@ const Portfolio = () => {
       backgroundColor: 'var(--bg-primary)',
       color: 'var(--text-secondary)'
     }}>
-      {/* Spline background - only render for non-hero sections */}
-      <div className="spline-container" style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '100%',
-        zIndex: -1
-      }}>
-        <iframe 
-          src='https://my.spline.design/retrofuturismbganimation-Lb3VtL1bNaYUnirKNzn0FvaW/' 
-          frameBorder='0' 
-          width='100%' 
-          height='100%'
-          title="Background Animation"
-        />
-      </div>
+      {/* Remove debug bar */}
+      {/* Spline background - only render for dark mode or system dark */}
+      {isDarkMode ? (
+        <div className="spline-container" style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          zIndex: 0
+        }}>
+          <iframe 
+            src='https://my.spline.design/retrofuturismbganimation-Lb3VtL1bNaYUnirKNzn0FvaW/' 
+            frameBorder='0' 
+            width='100%'
+            height='100%'
+            title="Background Animation"
+          />
+        </div>
+      ) : null}
       <div className="content min-h-screen transition-colors duration-300" style={{
         position: 'relative',
         zIndex: 10,
@@ -160,7 +192,7 @@ const Portfolio = () => {
               marginLeft: 0,
               paddingLeft: 0
             }}>
-              Product designer leader<br/>& AI prompt engineer
+              Product design leader<br/>& AI prompt engineer
             </h1>
             <p className="body-text mb-12" style={{
               fontSize: 'clamp(28px, 5vw, 36px)',

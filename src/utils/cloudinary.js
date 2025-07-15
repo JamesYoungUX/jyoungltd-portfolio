@@ -5,39 +5,26 @@ const CLOUDINARY_UPLOAD_PRESET = process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET;
 // Upload image to Cloudinary
 export const uploadImage = async (file, folder = 'portfolio') => {
   try {
-    console.log('Cloudinary config:', {
-      cloudName: CLOUDINARY_CLOUD_NAME,
-      uploadPreset: CLOUDINARY_UPLOAD_PRESET,
-      folder: folder
-    });
-
     const formData = new FormData();
     formData.append('file', file);
     formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
     formData.append('folder', folder);
 
     const uploadUrl = `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`;
-    console.log('Uploading to:', uploadUrl);
 
     const response = await fetch(uploadUrl, {
       method: 'POST',
       body: formData,
     });
 
-    console.log('Response status:', response.status);
-    console.log('Response headers:', response.headers);
-
     if (!response.ok) {
       const errorText = await response.text();
-      console.error('Cloudinary error response:', errorText);
       throw new Error(`Upload failed: ${response.status} ${response.statusText} - ${errorText}`);
     }
 
     const data = await response.json();
-    console.log('Upload response:', data);
     return data;
   } catch (error) {
-    console.error('Error uploading image:', error);
     throw error;
   }
 };
