@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import Portfolio from './Portfolio';
 import SEOCCaseStudy from './SEOCCaseStudy';
 import Resume from './Resume';
@@ -13,7 +13,7 @@ import './Portfolio.css';
 function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'auto' });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [pathname]);
   return null;
 }
@@ -21,19 +21,17 @@ function ScrollToTop() {
 function App() {
   return (
     <div className="App">
-      <Router>
-        <ScrollToTop />
-        <Routes>
-          <Route path="/" element={<Portfolio />} />
-          <Route path="/case-study/seoc" element={<SEOCCaseStudy />} />
-          <Route path="/case-study/epsi" element={<EPSICaseStudy />} />
-          <Route path="/case-study/resilience" element={<ResilienceCaseStudy />} />
-          <Route path="/case-study/pearl" element={<CaseStudyPearl />} />
-          <Route path="/case-study/ayva" element={<CaseStudyAyva />} />
-          <Route path="/resume" element={<Resume />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </Router>
+      <ScrollToTop />
+      <Routes>
+        <Route path="/" element={<Portfolio />} />
+        <Route path="/case-study/seoc" element={<SEOCCaseStudy />} />
+        <Route path="/case-study/epsi" element={<EPSICaseStudy />} />
+        <Route path="/case-study/resilience" element={<ResilienceCaseStudy />} />
+        <Route path="/case-study/pearl" element={<CaseStudyPearl />} />
+        <Route path="/case-study/ayva" element={<CaseStudyAyva />} />
+        <Route path="/resume" element={<Resume />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </div>
   );
 }

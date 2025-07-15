@@ -58,7 +58,6 @@ const Portfolio = () => {
   const [theme, setTheme] = useState('system');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showTopBtn, setShowTopBtn] = useState(false);
-  const [systemPrefersDark, setSystemPrefersDark] = useState(() => window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
   const [activeTheme, setActiveTheme] = useState(() => document.documentElement.getAttribute('data-theme') || 'system');
   const location = useLocation();
 
@@ -71,8 +70,7 @@ const Portfolio = () => {
   useEffect(() => {
     if (!window.matchMedia) return;
     const media = window.matchMedia('(prefers-color-scheme: dark)');
-    const listener = (e) => {
-      setSystemPrefersDark(e.matches);
+    const listener = () => {
       if (theme === 'system') {
         applyTheme('system');
       }
@@ -118,15 +116,6 @@ const Portfolio = () => {
       root.setAttribute('data-theme', newTheme);
     }
     localStorage.setItem('theme', newTheme);
-  };
-
-  const handleThemeChange = (newTheme) => {
-    setTheme(newTheme);
-    applyTheme(newTheme);
-  };
-
-  const toggleMobileMenu = () => {
-    setMobileMenuOpen(!mobileMenuOpen);
   };
 
   const handleScrollToTop = () => {
@@ -212,7 +201,15 @@ const Portfolio = () => {
                   color: '#000000',
                   background: '#ffffff',
                   borderColor: '#000000'
-                }}>
+                }}
+                  onClick={e => {
+                    e.preventDefault();
+                    const section = document.getElementById('projects');
+                    if (section) {
+                      section.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
+                >
                   View Case Studies
                 </a>
                 <a href="#contact" className="border px-6 py-3 rounded-md btn-text hover:border-gray-500 transition-colors" style={{
@@ -321,7 +318,7 @@ const Portfolio = () => {
                   lineHeight: 1.5,
                   color: 'var(--text-secondary)'
                 }}>
-                  In recent years, I've become captivated by the possibilities of artificial intelligence. Over the past 3 years, I've immersed myself in the art and science of prompt engineering, exploring how language models can power the next generation of digital tools.
+                  In recent years, I&apos;ve become captivated by the possibilities of artificial intelligence. Over the past 3 years, I&apos;ve immersed myself in the art and science of prompt engineering, exploring how language models can power the next generation of digital tools.
                 </p>
                 <p className="body-text mb-8" style={{
                   fontSize: 'clamp(14px, 2vw, 16px)',
@@ -329,7 +326,7 @@ const Portfolio = () => {
                   lineHeight: 1.5,
                   color: 'var(--text-secondary)'
                 }}>
-                  Today, I blend human-centered design principles with cutting-edge AI to craft interfaces that not only solve real problems but also delight users—especially in the healthcare domain. My passion lies in making advanced technology accessible, turning complicated systems into something instinctive and inviting, and always keeping people's needs at the heart of every solution.
+                  Today, I blend human-centered design principles with cutting-edge AI to craft interfaces that not only solve real problems but also delight users—especially in the healthcare domain. My passion lies in making advanced technology accessible, turning complicated systems into something instinctive and inviting, and always keeping people&apos;s needs at the heart of every solution.
                 </p>
                 
                 <h3 className="text-xl font-medium mb-4" style={{ color: 'var(--text-primary)' }}>Skills</h3>
