@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
+import { useTheme } from './ThemeProvider';
+import { Helmet } from 'react-helmet-async';
 
 const caseStudies = [
   {
@@ -55,29 +57,13 @@ const featured = caseStudies[0];
 const others = caseStudies.slice(1);
 
 const Portfolio = () => {
-  const [theme, setTheme] = useState('system');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showTopBtn, setShowTopBtn] = useState(false);
+  useTheme();
   const [activeTheme, setActiveTheme] = useState(() => document.documentElement.getAttribute('data-theme') || 'system');
   const location = useLocation();
 
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('theme') || 'system';
-    setTheme(savedTheme);
-    applyTheme(savedTheme);
-  }, []);
-
-  useEffect(() => {
-    if (!window.matchMedia) return;
-    const media = window.matchMedia('(prefers-color-scheme: dark)');
-    const listener = () => {
-      if (theme === 'system') {
-        applyTheme('system');
-      }
-    };
-    media.addEventListener('change', listener);
-    return () => media.removeEventListener('change', listener);
-  }, [theme]);
+  // Remove local theme management, rely on context
 
   // MutationObserver to track data-theme changes
   useEffect(() => {
@@ -107,40 +93,30 @@ const Portfolio = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const applyTheme = (newTheme) => {
-    const root = document.documentElement;
-    if (newTheme === 'system') {
-      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-      root.setAttribute('data-theme', systemTheme);
-    } else {
-      root.setAttribute('data-theme', newTheme);
-    }
-    localStorage.setItem('theme', newTheme);
-  };
-
   const handleScrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const badgeStyle = {
-    borderRadius: '9999px',
-    padding: '0.5rem 1rem',
-    fontSize: '14px',
-    display: 'inline-block',
-    cursor: 'pointer'
-  };
+  // badgeStyle moved to CSS class .skill-badge
 
   // Helper to determine if dark mode is active
   const isDarkMode = activeTheme === 'dark';
 
   return (
-    <div className="text-gray-300 transition-colors duration-300" style={{ 
-      fontFamily: "'Bricolage Grotesque', sans-serif", 
-      margin: 0, 
-      overflowX: 'hidden',
-      backgroundColor: 'var(--bg-primary)',
-      color: 'var(--text-secondary)'
-    }}>
+    <div className="text-gray-300 transition-colors duration-300 font-bricolage m-0 overflow-x-hidden" style={{ backgroundColor: 'var(--bg-primary)', color: 'var(--text-secondary)' }}>
+      <Helmet>
+        <title>James Young | Product Design Leader & AI Prompt Engineer</title>
+        <meta name="description" content="At the forefront of healthcare innovation, James Young leads multidisciplinary teams in shaping AI-powered digital products—delivering intuitive, impactful solutions for clinicians and patients alike." />
+        <meta property="og:title" content="James Young | Product Design Leader & AI Prompt Engineer" />
+        <meta property="og:description" content="At the forefront of healthcare innovation, James Young leads multidisciplinary teams in shaping AI-powered digital products—delivering intuitive, impactful solutions for clinicians and patients alike." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://jyoungltd.com/" />
+        <meta property="og:image" content="https://jyoungltd.com/Framework_for_Innovation_transparent.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="James Young | Product Design Leader & AI Prompt Engineer" />
+        <meta name="twitter:description" content="At the forefront of healthcare innovation, James Young leads multidisciplinary teams in shaping AI-powered digital products—delivering intuitive, impactful solutions for clinicians and patients alike." />
+        <meta name="twitter:image" content="https://jyoungltd.com/Framework_for_Innovation_transparent.png" />
+      </Helmet>
       {/* Remove debug bar */}
       {/* Spline background - only render for dark mode or system dark */}
       {isDarkMode ? (
@@ -158,42 +134,19 @@ const Portfolio = () => {
             width='100%'
             height='100%'
             title="Background Animation"
+            aria-hidden="true"
           />
         </div>
       ) : null}
-      <div className="content min-h-screen transition-colors duration-300" style={{
-        position: 'relative',
-        zIndex: 10,
-        background: 'linear-gradient(to bottom, var(--bg-secondary), var(--bg-tertiary))'
-      }}>
+      <div className="content min-h-screen transition-colors duration-300 bg-gradient-to-b from-[var(--bg-secondary)] to-[var(--bg-tertiary)] relative z-10">
         <div className="max-w-3xl md:max-w-4xl lg:max-w-5xl xl:max-w-6xl 2xl:max-w-7xl mx-auto px-4 py-16">
           {/* Header */}
           <Header />
 
           {/* Hero Section */}
           <section className="mb-40">
-            <h1 className="heading mb-8" style={{
-              fontSize: 'clamp(60px, 8vw, 80px)',
-              fontWeight: 432,
-              letterSpacing: '-0.07em',
-              lineHeight: 1.1,
-              color: 'var(--text-primary)',
-              marginLeft: 0,
-              paddingLeft: 0
-            }}>
-              Product design leader<br/>& AI prompt engineer
-            </h1>
-            <p className="body-text mb-12" style={{
-              fontSize: 'clamp(28px, 5vw, 36px)',
-              fontWeight: 424,
-              letterSpacing: '-0.04em',
-              lineHeight: 1.2,
-              color: 'var(--text-secondary)',
-              marginLeft: 0,
-              paddingLeft: 0
-            }}>
-              At the forefront of healthcare innovation, I guide multidisciplinary teams in shaping AI-powered digital products—strategically aligning form and function to deliver intuitive, impactful solutions for clinicians and patients alike.
-            </p>
+            <h1 className="heading mb-8 text-primary ml-0 pl-0">Product design leader<br/>& AI prompt engineer</h1>
+            <p className="hero-subtext mb-12 ml-0 pl-0">At the forefront of healthcare innovation, I guide multidisciplinary teams in shaping AI-powered digital products—strategically aligning form and function to deliver intuitive, impactful solutions for clinicians and patients alike.</p>
             <div className="flex space-x-4">
                 <a href="#projects" className="border px-6 py-3 rounded-md btn-text hover:bg-gray-200 transition-colors" style={{
                   fontSize: '14px',
@@ -295,52 +248,31 @@ const Portfolio = () => {
 
           {/* About Section */}
           <section id="about" className="mb-32">
-            <h2 className="subheading mb-8" style={{
-              fontSize: 'clamp(28px, 5vw, 36px)',
-              fontWeight: 424,
-              letterSpacing: '-0.04em',
-              lineHeight: 1.2,
-              color: 'var(--text-primary)'
-            }}>About me</h2>
+            <h2 className="subheading mb-8 text-primary">About me</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="md:col-span-2">
-                <p className="body-text mb-6" style={{
-                  fontSize: 'clamp(14px, 2vw, 16px)',
-                  fontWeight: 460,
-                  lineHeight: 1.5,
-                  color: 'var(--text-secondary)'
-                }}>
+                <p className="body-text mb-6">
                   My journey began over 25 years ago, fueled by a fascination with how people interact with technology. Early on, I gravitated toward product and user experience design, but it was within the high-stakes world of healthcare that I found my true calling. For 16 years, I specialized in clinical UX design, working closely with doctors, nurses, and patients to reimagine healthcare systems—transforming convoluted workflows into intuitive, life-improving experiences.
                 </p>
-                <p className="body-text mb-8" style={{
-                  fontSize: 'clamp(14px, 2vw, 16px)',
-                  fontWeight: 460,
-                  lineHeight: 1.5,
-                  color: 'var(--text-secondary)'
-                }}>
+                <p className="body-text mb-8">
                   In recent years, I&apos;ve become captivated by the possibilities of artificial intelligence. Over the past 3 years, I&apos;ve immersed myself in the art and science of prompt engineering, exploring how language models can power the next generation of digital tools.
                 </p>
-                <p className="body-text mb-8" style={{
-                  fontSize: 'clamp(14px, 2vw, 16px)',
-                  fontWeight: 460,
-                  lineHeight: 1.5,
-                  color: 'var(--text-secondary)'
-                }}>
+                <p className="body-text mb-8">
                   Today, I blend human-centered design principles with cutting-edge AI to craft interfaces that not only solve real problems but also delight users—especially in the healthcare domain. My passion lies in making advanced technology accessible, turning complicated systems into something instinctive and inviting, and always keeping people&apos;s needs at the heart of every solution.
                 </p>
                 
-                <h3 className="text-xl font-medium mb-4" style={{ color: 'var(--text-primary)' }}>Skills</h3>
+                <h3 className="text-xl font-medium mb-4 text-primary">Skills</h3>
                 <div className="mb-8 grid grid-cols-2 gap-2 md:flex md:flex-wrap md:gap-2 md:justify-start">
-                  <span className="skill-badge glass hover-lift" style={badgeStyle}>Servant Leadership</span>
-                  <span className="skill-badge glass hover-lift" style={badgeStyle}>UX Leadership</span>
-                  <span className="skill-badge glass hover-lift" style={badgeStyle}>Accessibility</span>
-                  <span className="skill-badge glass hover-lift" style={badgeStyle}>AI Prompt Engineering</span>
-                  <span className="skill-badge glass hover-lift" style={badgeStyle}>Clinical UX Design</span>
-                  <span className="skill-badge glass hover-lift" style={badgeStyle}>Design Systems</span>
-                  <span className="skill-badge glass hover-lift" style={badgeStyle}>Healthcare UX</span>
-                  <span className="skill-badge glass hover-lift" style={badgeStyle}>Product Design</span>
-                  <span className="skill-badge glass hover-lift" style={badgeStyle}>Prototyping</span>
-                  <span className="skill-badge glass hover-lift" style={badgeStyle}>User Research</span>
+                  <span className="skill-badge glass hover-lift">Servant Leadership</span>
+                  <span className="skill-badge glass hover-lift">UX Leadership</span>
+                  <span className="skill-badge glass hover-lift">Accessibility</span>
+                  <span className="skill-badge glass hover-lift">AI Prompt Engineering</span>
+                  <span className="skill-badge glass hover-lift">Clinical UX Design</span>
+                  <span className="skill-badge glass hover-lift">Design Systems</span>
+                  <span className="skill-badge glass hover-lift">Healthcare UX</span>
+                  <span className="skill-badge glass hover-lift">Product Design</span>
+                  <span className="skill-badge glass hover-lift">Prototyping</span>
+                  <span className="skill-badge glass hover-lift">User Research</span>
                 </div>
               </div>
                               <div className="border-gradient p-1" style={{
@@ -350,29 +282,29 @@ const Portfolio = () => {
                   border: '1px solid transparent'
                 }}>
                   <div className="p-6 rounded-md h-full" style={{ background: 'var(--bg-secondary)' }}>
-                    <h3 className="text-xl font-medium mb-4" style={{ color: 'var(--text-primary)' }}>Experience</h3>
+                    <h3 className="text-xl font-medium mb-4 text-primary">Experience</h3>
                     <div className="mb-6">
-                      <div className="font-medium" style={{ color: 'var(--text-primary)' }}>Principal Clinical Product Designer</div>
+                      <div className="font-medium text-primary">Principal Clinical Product Designer</div>
                       <div style={{ color: 'var(--text-tertiary)' }}>Veteran Affairs • 2016–Present</div>
                     </div>
                     <div className="mb-6">
-                      <div className="font-medium" style={{ color: 'var(--text-primary)' }}>Lead (Staff) User Experience/Architect</div>
+                      <div className="font-medium text-primary">Lead (Staff) User Experience/Architect</div>
                       <div style={{ color: 'var(--text-tertiary)' }}>Signify Health/CVS Healthcare • 2023–2025</div>
                     </div>
                     <div className="mb-6">
-                      <div className="font-medium" style={{ color: 'var(--text-primary)' }}>Principal User Experience, Director of Product Design</div>
+                      <div className="font-medium text-primary">Principal User Experience, Director of Product Design</div>
                       <div style={{ color: 'var(--text-tertiary)' }}>Resilience Lab • 2022–2023</div>
                     </div>
                     <div className="mb-6">
-                      <div className="font-medium" style={{ color: 'var(--text-primary)' }}>Principal Product Designer</div>
+                      <div className="font-medium text-primary">Principal Product Designer</div>
                       <div style={{ color: 'var(--text-tertiary)' }}>Pearl Health • 2021–2022</div>
                     </div>
                     <div className="mb-6">
-                      <div className="font-medium" style={{ color: 'var(--text-primary)' }}>Senior Director User Experience</div>
+                      <div className="font-medium text-primary">Senior Director User Experience</div>
                       <div style={{ color: 'var(--text-tertiary)' }}>Bravado Health • 2017–2021</div>
                     </div>
                     <div>
-                      <div className="font-medium" style={{ color: 'var(--text-primary)' }}>Total Experience</div>
+                      <div className="font-medium text-primary">Total Experience</div>
                       <div style={{ color: 'var(--text-tertiary)' }}>25 years UX • 16 years Clinical • 3 years AI</div>
                     </div>
                   </div>
@@ -387,13 +319,7 @@ const Portfolio = () => {
 
           {/* Projects Section */}
           <section id="projects" className="mb-32">
-            <h2 className="subheading mb-16" style={{
-              fontSize: 'clamp(28px, 5vw, 36px)',
-              fontWeight: 424,
-              letterSpacing: '-0.04em',
-              lineHeight: 1.2,
-              color: 'var(--text-primary)'
-            }}>Case Studies</h2>
+            <h2 className="subheading mb-16 text-primary">Case Studies</h2>
             {/* Featured Case Study */}
             <Link
               to={featured.link}
@@ -420,7 +346,7 @@ const Portfolio = () => {
                   }}
                 ></div>
                 <div className="flex flex-col md:flex-row justify-between mb-2">
-                  <h2 className="text-xl font-medium mb-2 md:mb-0" style={{ color: 'var(--text-primary)' }}>{featured.title}</h2>
+                  <h2 className="text-xl font-medium mb-2 md:mb-0 text-primary">{featured.title}</h2>
                 </div>
                 {/* Featured Case Study tags */}
                 <div className="flex flex-wrap gap-2">
@@ -428,12 +354,7 @@ const Portfolio = () => {
                     <span key={i} className="inline-block bg-white/10 text-[var(--text-primary)] px-3 py-1 rounded-full text-xs font-semibold tracking-wide uppercase border border-[var(--border-primary)]">{tag}</span>
                   ))}
                 </div>
-                <p className="body-text mb-6 flex-1" style={{
-                  fontSize: 'clamp(14px, 2vw, 16px)',
-                  fontWeight: 460,
-                  lineHeight: 1.5,
-                  color: 'var(--text-secondary)'
-                }}>
+                <p className="body-text mb-6 flex-1">
                   {featured.description}
                 </p>
                 <div className="flex items-center justify-between mt-auto">
@@ -483,7 +404,7 @@ const Portfolio = () => {
                       }}
                     ></div>
                     <div className="flex flex-col md:flex-row justify-between mb-2">
-                      <h3 className="text-xl font-medium mb-2 md:mb-0" style={{ color: 'var(--text-primary)' }}>{cs.title}</h3>
+                      <h3 className="text-xl font-medium mb-2 md:mb-0 text-primary">{cs.title}</h3>
                     </div>
                     {/* Other Case Studies tags */}
                     <div className="flex flex-wrap gap-2">
@@ -491,12 +412,7 @@ const Portfolio = () => {
                         <span key={i} className="inline-block bg-white/10 text-[var(--text-primary)] px-3 py-1 rounded-full text-xs font-semibold tracking-wide uppercase border border-[var(--border-primary)]">{tag}</span>
                       ))}
                     </div>
-                    <p className="body-text mb-6 flex-1" style={{
-                      fontSize: 'clamp(14px, 2vw, 16px)',
-                      fontWeight: 460,
-                      lineHeight: 1.5,
-                      color: 'var(--text-secondary)'
-                    }}>
+                    <p className="body-text mb-6 flex-1">
                       {cs.description}
                     </p>
                     <div className="flex items-center justify-between mt-auto">

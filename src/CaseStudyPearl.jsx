@@ -1,5 +1,6 @@
 import React from 'react';
 import CaseStudyTemplate from './CaseStudyTemplate';
+import { Helmet } from 'react-helmet-async';
 
 const pearlImage = 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=800&q=80'; // Placeholder, replace with actual image if available
 
@@ -43,23 +44,29 @@ const sections = [
     </ul>`
   },
   {
-    heading: 'Reflection',
+    heading: 'Reflections',
     content: `Starting from a blank slate required vision, speed, and empathy. As the first product designer at Pearl Health, I was able to shape not just an application, but the foundation of a business—proving the power of design to accelerate growth, secure investment, and drive better healthcare for patients and physicians alike.<br/><br/>Joining Pearl Health as the first designer in a fast-paced startup environment was both a challenge and a privilege. I had the unique opportunity to shape not only the product’s user experience, but also the company’s design culture from the ground up. Working directly with the C-suite, I helped translate ambitious business goals into a tangible, user-centered application—bridging the gap between vision and execution. This close collaboration enabled rapid iteration, strategic alignment, and a shared sense of ownership that was critical to our success. The experience reinforced my belief in the power of design leadership to drive innovation, accelerate growth, and create meaningful impact for both clinicians and patients.`
   }
 ];
 
 export default function CaseStudyPearl() {
   return (
-    <CaseStudyTemplate
-      title="Pearl Health: Transforming Value-Based Care Through Design-Driven Innovation"
-      company="Pearl Health"
-      year="2021–2022"
-      tags={["USER EXPERIENCE", "STRATEGY", "LEADERSHIP"]}
-      intro="Pearl Health empowers independent primary care providers to thrive in value-based care models, surfacing clinically relevant, actionable insights via a platform that fits seamlessly into their everyday workflows. As the first product designer at Pearl, I played a foundational role—building the initial design language, conceiving the signature hex map patient interface, and helping evolve business strategy through thoughtful, human-centered design."
-      image={pearlImage}
-      platform="Web, Dashboard"
-      sections={sections}
-      teamList={"6 Engineers<br/>3 Data Scientists<br/>1 Business Analyst<br/>1 Product Manager"}
+    <>
+      <Helmet>
+        <title>Pearl Health Case Study | James Young - Product Design Leader</title>
+        <meta name="description" content="Case study: Pearl Health, transforming value-based care through design-driven innovation, led by James Young." />
+      </Helmet>
+      <CaseStudyTemplate
+        title="Pearl Health: Transforming Value-Based Care Through Design-Driven Innovation"
+        company="Pearl Health"
+        year="2021–2022"
+        tags={["USER EXPERIENCE", "STRATEGY", "LEADERSHIP"]}
+        intro="Pearl Health empowers independent primary care providers to thrive in value-based care models, surfacing clinically relevant, actionable insights via a platform that fits seamlessly into their everyday workflows. As the first product designer at Pearl, I played a foundational role—building the initial design language, conceiving the signature hex map patient interface, and helping evolve business strategy through thoughtful, human-centered design."
+        image={pearlImage}
+        platform="Web, Dashboard"
+        sections={sections}
+        teamList={"6 Engineers<br/>3 Data Scientists<br/>1 Business Analyst<br/>1 Product Manager"}
     />
+    </>
   );
 } 

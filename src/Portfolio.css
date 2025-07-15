@@ -136,6 +136,14 @@ body {
   z-index: 1;
 }
 
+.hero-subtext {
+  font-size: clamp(28px, 5vw, 36px);
+  font-weight: 424;
+  letter-spacing: -0.04em;
+  line-height: 1.2;
+  color: var(--text-secondary);
+}
+
 /* Glowing CTA button */
 .cta-glow {
   box-shadow: 0 0 16px 2px #8b5cf6, 0 0 32px 8px #6366f1;
@@ -167,4 +175,19 @@ body {
 
 [data-theme="dark"] footer .text-gray-800 {
   color: #fff;
+} 
+
+.resume-heading {
+  color: var(--text-primary);
+}
+.resume-section-title {
+  color: var(--text-primary);
+}
+.resume-company {
+  color: var(--text-primary);
+}
+.resume-print-btn {
+  color: #000;
+  background: #fff;
+  border-color: #000;
 } 

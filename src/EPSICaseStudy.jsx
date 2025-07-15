@@ -1,5 +1,6 @@
 import React from 'react';
 import CaseStudyTemplate from './CaseStudyTemplate';
+import { Helmet } from 'react-helmet-async';
 
 const epsiData = {
   title: 'AI-Powered Healthcare Dashboard Form Intake (EPSI)',
@@ -61,6 +62,17 @@ const epsiData = {
   ]
 };
 
-const EPSICaseStudy = () => <CaseStudyTemplate {...epsiData} />;
+const EPSICaseStudy = () => (
+  <>
+    <Helmet>
+      <title>EPSI Case Study | James Young - Product Design Leader</title>
+      <meta name="description" content="Case study: EPSI, an AI-powered healthcare dashboard for the VA, designed by James Young to streamline form intake and clinical workflows." />
+    </Helmet>
+    <CaseStudyTemplate {...epsiData}
+      role={"Lead product designer\nFacilitation"}
+      methodology={"Double Diamond\nAgile\nScrum\nUser-Centered Design"}
+    />
+  </>
+);
 
 export default EPSICaseStudy; 

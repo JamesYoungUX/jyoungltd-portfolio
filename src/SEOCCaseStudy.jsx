@@ -1,5 +1,6 @@
 import React from 'react';
 import CaseStudyTemplate from './CaseStudyTemplate';
+import { Helmet } from 'react-helmet-async';
 
 const seocData = {
   title: 'AI Powered Workflow to Enhance Standardized Episodes of Care (SEOC)',
@@ -65,6 +66,14 @@ const seocData = {
   ]
 };
 
-const SEOCCaseStudy = () => <CaseStudyTemplate {...seocData} />;
+const SEOCCaseStudy = () => (
+  <>
+    <Helmet>
+      <title>SEOC Case Study | James Young - Product Design Leader</title>
+      <meta name="description" content="Case study: SEOC, an AI-powered workflow to enhance standardized episodes of care for Veterans Affairs, led by James Young." />
+    </Helmet>
+    <CaseStudyTemplate {...seocData} />
+  </>
+);
 
 export default SEOCCaseStudy; 

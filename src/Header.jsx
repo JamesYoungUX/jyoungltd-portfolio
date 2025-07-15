@@ -72,7 +72,7 @@ const Header = () => {
     <>
       <header className="flex items-center mb-24">
         <div className="flex items-center space-x-1 flex-shrink-0">
-          <Link to="/" className="font-medium text-xl text-primary no-underline">James Young</Link>
+          <Link to="/" className="font-medium text-xl text-primary no-underline" aria-label="Home">James Young</Link>
         </div>
         <div className="flex flex-1 justify-end items-center min-w-0">
           <nav className="hidden md:flex items-center space-x-8 mr-2">
@@ -119,14 +119,26 @@ const Header = () => {
             <button
               onClick={() => handleThemeChange(theme === 'dark' ? 'light' : theme === 'light' ? 'system' : 'dark')}
               className="p-2 rounded-md hover:bg-gray-800 transition-colors ml-2"
+              aria-label="Toggle theme"
             >
               {theme === 'dark' && (
-                <svg className="w-5 h-5 text-gray-900 dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg
+                  className="w-5 h-5"
+                  style={{ stroke: '#fff', filter: 'drop-shadow(0 0 4px #fff)' }}
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
                 </svg>
               )}
               {theme === 'light' && (
-                <svg className="w-5 h-5 text-gray-900 dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg
+                  className="w-5 h-5 text-gray-900 dark:text-white"
+                  style={{ filter: theme === 'light' ? '' : 'drop-shadow(0 0 4px #fff)' }}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
                 </svg>
               )}
@@ -145,6 +157,7 @@ const Header = () => {
           <button
             onClick={() => handleThemeChange(theme === 'dark' ? 'light' : theme === 'light' ? 'system' : 'dark')}
             className="p-2 rounded-md hover:bg-gray-800 transition-colors text-base font-semibold leading-6"
+            aria-label="Toggle theme"
           >
             {theme === 'dark' && (
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

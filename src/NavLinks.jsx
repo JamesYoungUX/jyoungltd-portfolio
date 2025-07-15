@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 /**
  * NavLinks component renders navigation sections and links for both header and footer.
@@ -56,11 +57,16 @@ const NavLinks = ({ layoutClass = '', onAboutClick }) => {
       <div className="w-full text-left">
         <h5 className="font-semibold mb-3 text-gray-800 dark:text-white text-lg 2xl:text-xl">Location</h5>
         <ul className="space-y-2 text-gray-500 dark:text-gray-400 font-inter">
-          <li><a href="#" className="hover:text-blue-600 dark:hover:text-blue-300 transition-colors">Orlando FL</a></li>
+          <li><span className="hover:text-blue-600 dark:hover:text-blue-300 transition-colors" aria-disabled="true">Orlando FL</span></li>
         </ul>
       </div>
     </div>
   );
+};
+
+NavLinks.propTypes = {
+  layoutClass: PropTypes.string,
+  onAboutClick: PropTypes.func
 };
 
 export default NavLinks;

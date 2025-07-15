@@ -1,5 +1,6 @@
 import React from 'react';
 import CaseStudyTemplate from './CaseStudyTemplate';
+import { Helmet } from 'react-helmet-async';
 
 const ayvaImage = 'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=800&q=80'; // Placeholder, replace with actual image if available
 
@@ -45,23 +46,29 @@ const sections = [
     </ul>`
   },
   {
-    heading: 'Reflection',
+    heading: 'Reflections',
     content: `The journey of building Ayva with Bravado Health reinforced the impact design can have on patient care and business outcomes. By enabling real-time insights, collaborative care, and advocate empowerment, Ayva advanced the standard for surgical recovery—and became a defining asset in Bravado Health’s success and acquisition.<br/><br/>Guiding a growing team through the uncertainty of the COVID-19 pandemic was a transformative responsibility. I was tasked not only with delivering a high-impact product, but also with cultivating resilience, empathy, and professional growth within my team. Mentoring young designers during this period was especially meaningful—helping them navigate remote collaboration, build confidence, and develop their own voices as contributors to a mission-driven product. This experience deepened my appreciation for the role of leadership in nurturing talent and sustaining momentum, even in the most unpredictable times.`
   }
 ];
 
 export default function CaseStudyAyva() {
   return (
-    <CaseStudyTemplate
-      title="Ayva: Redesigning Surgical Care With a Digital Assistant"
-      company="Bravado Health"
-      year="2018–2021"
-      tags={["PRODUCT DESIGN", "LEADERSHIP", "HEALTHCARE UX"]}
-      intro="Ayva, a product developed by Bravado Health, is a digital platform engineered to optimize and humanize pre- and post-operative surgical care. As Director of Product Design, I built and led a team of five, responsible for developing Ayva’s signature design language, user journey, and engagement strategy. The adoption and success of the Ayva platform played a significant role in Bravado Health’s successful acquisition."
-      image={ayvaImage}
-      platform="Web, Mobile"
-      sections={sections}
-      teamList={"4 Product Designers<br/>8 Engineers<br/>1 UX Writer<br/>1 Business Analyst<br/>1 Product Owner<br/>1 Product Manager"}
+    <>
+      <Helmet>
+        <title>Ayva Case Study | James Young - Product Design Leader</title>
+        <meta name="description" content="Case study: Ayva, a digital assistant for surgical care, designed by James Young to optimize and humanize pre- and post-operative workflows." />
+      </Helmet>
+      <CaseStudyTemplate
+        title="Ayva: Redesigning Surgical Care With a Digital Assistant"
+        company="Bravado Health"
+        year="2018–2021"
+        tags={["PRODUCT DESIGN", "LEADERSHIP", "HEALTHCARE UX"]}
+        intro="Ayva, a product developed by Bravado Health, is a digital platform engineered to optimize and humanize pre- and post-operative surgical care. As Director of Product Design, I built and led a team of five, responsible for developing Ayva’s signature design language, user journey, and engagement strategy. The adoption and success of the Ayva platform played a significant role in Bravado Health’s successful acquisition."
+        image={ayvaImage}
+        platform="Web, Mobile"
+        sections={sections}
+        teamList={"4 Product Designers<br/>8 Engineers<br/>1 UX Writer<br/>1 Business Analyst<br/>1 Product Owner<br/>1 Product Manager"}
     />
+    </>
   );
 } 

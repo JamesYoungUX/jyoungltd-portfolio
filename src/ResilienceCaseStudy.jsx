@@ -1,5 +1,6 @@
 import React from 'react';
 import CaseStudyTemplate from './CaseStudyTemplate';
+import { Helmet } from 'react-helmet-async';
 
 const resilienceData = {
   title: 'Automating Patient-Therapist Alignment in the COVID-19 Recovery Era',
@@ -41,12 +42,24 @@ const resilienceData = {
 </ul>`
     },
     {
-      heading: 'Reflection',
+      heading: 'Reflections',
       content: `This initiative illustrated how design and prototyping can do more than deliver user-centric systems—they can be instrumental in securing stakeholder confidence, unlocking funding, and fueling company growth. By coupling thoughtful automation with strategic storytelling, I helped Resilience Lab rapidly scale its mission of bringing better mental healthcare to all, at the moment it was most needed.`
     }
   ]
 };
 
-const ResilienceCaseStudy = () => <CaseStudyTemplate {...resilienceData} />;
+const ResilienceCaseStudy = () => (
+  <>
+    <Helmet>
+      <title>Resilience Lab Case Study | James Young - Product Design Leader</title>
+      <meta name="description" content="Case study: Resilience Lab, automating patient-therapist alignment in the COVID-19 recovery era, led by James Young." />
+    </Helmet>
+    <CaseStudyTemplate
+      {...resilienceData}
+      role={"Design Leadership\nPrincipal Product Designer\nConsultation"}
+      methodology={"Double Diamond\nAgile\nScrum"}
+    />
+  </>
+);
 
 export default ResilienceCaseStudy; 

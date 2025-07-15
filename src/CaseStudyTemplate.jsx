@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
+import PropTypes from 'prop-types';
 
 const CaseStudyTemplate = ({
   title,
@@ -11,7 +12,9 @@ const CaseStudyTemplate = ({
   image,
   sections = [],
   platform = '',
-  teamList = ''
+  teamList = '',
+  role = 'Lead Product Designer\nConsultation\nFacilitation',
+  methodology = 'Agile\nScrum'
 }) => (
   <div className="text-gray-300 transition-colors duration-300" style={{
     fontFamily: "'Bricolage Grotesque', sans-serif",
@@ -52,7 +55,7 @@ const CaseStudyTemplate = ({
             {/* Row 1 */}
             <div style={{ gridColumn: '1', gridRow: '1' }}>
               <div className="font-semibold mb-1" style={{ color: 'var(--text-primary)' }}>Role</div>
-              <div style={{ color: 'var(--text-secondary)' }}>Lead Product Designer<br/>Consultation<br/>Facilitation</div>
+              <div style={{ color: 'var(--text-secondary)' }}>{role.split('\n').map((item, i) => (<span key={i}>{item}<br/></span>))}</div>
             </div>
             <div style={{ gridColumn: '2', gridRow: '1' }}>
               <div className="font-semibold mb-1" style={{ color: 'var(--text-primary)' }}>Platform</div>
@@ -61,12 +64,16 @@ const CaseStudyTemplate = ({
             {/* Team (far right, spans both rows, aligned to top) */}
             <div style={{ gridColumn: '3', gridRow: '1 / span 2', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
               <div className="font-semibold mb-1" style={{ color: 'var(--text-primary)' }}>Team</div>
+              {/*
+                WARNING: Only use dangerouslySetInnerHTML with trusted, static content.
+                Never use with user-generated content to avoid XSS vulnerabilities.
+              */}
               <div style={{ color: 'var(--text-secondary)' }} dangerouslySetInnerHTML={{ __html: teamList }} />
             </div>
             {/* Row 2 */}
             <div style={{ gridColumn: '1', gridRow: '2' }}>
               <div className="font-semibold mb-1" style={{ color: 'var(--text-primary)' }}>Methodology</div>
-              <div style={{ color: 'var(--text-secondary)' }}>Agile<br/>Scrum</div>
+              <div style={{ color: 'var(--text-secondary)' }}>{methodology.split('\n').map((item, i) => (<span key={i}>{item}<br/></span>))}</div>
             </div>
             <div style={{ gridColumn: '2', gridRow: '2' }}>
               <div className="font-semibold mb-1" style={{ color: 'var(--text-primary)' }}>Time</div>
@@ -91,6 +98,10 @@ const CaseStudyTemplate = ({
               />
             )}
             <h2 className="text-2xl font-semibold mb-2" style={{ color: 'var(--text-primary)' }}>{section.heading}</h2>
+            {/*
+              WARNING: Only use dangerouslySetInnerHTML with trusted, static content.
+              Never use with user-generated content to avoid XSS vulnerabilities.
+            */}
             <div style={{ color: 'var(--text-secondary)' }} dangerouslySetInnerHTML={{ __html: section.content }} />
           </section>
         ))}
@@ -101,5 +112,28 @@ const CaseStudyTemplate = ({
     </div>
   </div>
 );
+
+CaseStudyTemplate.propTypes = {
+  title: PropTypes.string.isRequired,
+  company: PropTypes.string.isRequired,
+  year: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]).isRequired,
+  tags: PropTypes.arrayOf(PropTypes.string),
+  intro: PropTypes.string,
+  image: PropTypes.string,
+  sections: PropTypes.arrayOf(
+    PropTypes.shape({
+      heading: PropTypes.string,
+      content: PropTypes.string,
+      image: PropTypes.string
+    })
+  ),
+  platform: PropTypes.string,
+  teamList: PropTypes.string,
+  role: PropTypes.string,
+  methodology: PropTypes.string
+};
 
 export default CaseStudyTemplate; 
