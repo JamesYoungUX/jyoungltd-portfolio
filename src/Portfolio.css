@@ -146,8 +146,11 @@ body {
   transform: translateY(-2px) scale(1.04);
 }
 
-[data-theme="dark"] footer {
-  background: #101828 !important;
+[data-theme="dark"] footer,
+[data-theme="dark"] .footer,
+[data-theme="dark"] footer[class] {
+  background: rgba(16, 24, 40, 0.85) !important;
+  backdrop-filter: blur(2px) !important;
 }
 
 [data-theme="dark"] .mobile-menu-dropdown {

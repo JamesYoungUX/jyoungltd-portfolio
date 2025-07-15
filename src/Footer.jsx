@@ -1,7 +1,21 @@
 import React from 'react';
 
+const isDarkMode = () => {
+  if (typeof document !== 'undefined') {
+    return document.documentElement.getAttribute('data-theme') === 'dark';
+  }
+  return false;
+};
+
 const Footer = () => (
-  <footer className="relative z-10 bg-white dark:bg-gray-900 dark:backdrop-blur-none mt-12 border-t border-gray-200 dark:border-white/10 rounded-t-3xl shadow-inner pt-12">
+  <footer
+    className="relative z-10 mt-12 border-t border-gray-200 dark:border-white/10 rounded-t-3xl shadow-inner pt-12"
+    style={
+      isDarkMode()
+        ? { background: 'rgba(16, 24, 40, 0.85)', backdropFilter: 'blur(2px)' }
+        : {}
+    }
+  >
     <div className="max-w-7xl mx-auto px-6 pb-10">
       <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-10">
         {/* Logo and tagline */}
@@ -77,7 +91,6 @@ const Footer = () => (
       </div>
     </div>
   </footer>
-
-)
+);
 
 export default Footer; 

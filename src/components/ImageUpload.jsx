@@ -5,7 +5,6 @@ const ImageUpload = () => {
   const [uploading, setUploading] = useState(false);
   const [uploadedImage, setUploadedImage] = useState(null);
   const [error, setError] = useState(null);
-  const [debugInfo, setDebugInfo] = useState(null);
 
   const handleFileUpload = async (event) => {
     const file = event.target.files[0];
@@ -13,18 +12,12 @@ const ImageUpload = () => {
 
     setUploading(true);
     setError(null);
-    setDebugInfo(null);
 
     try {
-      
       const result = await uploadImage(file, 'portfolio');
       setUploadedImage(result);
     } catch (err) {
       setError(`Upload failed: ${err.message}`);
-      setDebugInfo({
-        message: err.message,
-        stack: err.stack
-      });
     } finally {
       setUploading(false);
     }
@@ -35,7 +28,6 @@ const ImageUpload = () => {
       <h3 className="text-xl font-medium mb-4" style={{ color: 'var(--text-primary)' }}>
         Image Upload
       </h3>
-      
       <input
         type="file"
         accept="image/*"
@@ -43,31 +35,14 @@ const ImageUpload = () => {
         disabled={uploading}
         className="mb-4"
       />
-      
       {uploading && (
         <p style={{ color: 'var(--text-secondary)' }}>Uploading...</p>
       )}
-      
       {error && (
         <div className="mt-4">
           <p style={{ color: '#ef4444' }}>{error}</p>
-          {debugInfo && (
-            <details className="mt-2">
-              <summary style={{ color: 'var(--text-tertiary)', cursor: 'pointer' }}>
-                Debug Info
-              </summary>
-              <pre className="mt-2 text-xs p-2 rounded" style={{ 
-                background: 'var(--bg-tertiary)', 
-                color: 'var(--text-tertiary)',
-                overflow: 'auto'
-              }}>
-                {JSON.stringify(debugInfo, null, 2)}
-              </pre>
-            </details>
-          )}
         </div>
       )}
-      
       {uploadedImage && (
         <div className="mt-4">
           <p style={{ color: 'var(--text-secondary)' }}>Upload successful!</p>
