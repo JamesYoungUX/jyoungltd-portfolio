@@ -64,11 +64,11 @@ const CaseStudyTemplate = ({
             {/* Team (far right, spans both rows, aligned to top) */}
             <div style={{ gridColumn: '3', gridRow: '1 / span 2', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
               <div className="font-semibold mb-1" style={{ color: 'var(--text-primary)' }}>Team</div>
-              {/*
-                WARNING: Only use dangerouslySetInnerHTML with trusted, static content.
-                Never use with user-generated content to avoid XSS vulnerabilities.
-              */}
-              <div style={{ color: 'var(--text-secondary)' }} dangerouslySetInnerHTML={{ __html: teamList }} />
+              <div style={{ color: 'var(--text-secondary)' }}>
+                {teamList.split(',').map((member, i) => (
+                  <span key={i}>{member.trim()}<br/></span>
+                ))}
+              </div>
             </div>
             {/* Row 2 */}
             <div style={{ gridColumn: '1', gridRow: '2' }}>
