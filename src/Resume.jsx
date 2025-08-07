@@ -124,6 +124,53 @@ const Resume = () => {
       <Helmet>
         <title>James Young - Product Design Leader & AI Prompt Engineer</title>
         <meta name="description" content="Resume of James Young, a product design leader and AI prompt engineer with extensive experience in healthcare, UX, and digital innovation." />
+        
+        {/* Structured Data (JSON-LD) */}
+        <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Person",
+          "name": "James Young",
+          "jobTitle": "Product Design Leader & AI Prompt Engineer",
+          "description": "Product design leader and AI prompt engineer with extensive experience in healthcare, UX, and digital innovation.",
+          "url": "https://jyoungltd.com/resume",
+          "image": "https://jyoungltd.com/Framework_for_Innovation_transparent.png",
+          "sameAs": ["https://www.linkedin.com/in/jyoung2k/"],
+          "knowsAbout": [
+            "Product Design",
+            "UX Design", 
+            "AI Prompt Engineering",
+            "Healthcare UX",
+            "Clinical UX",
+            "Design Leadership",
+            "User Research",
+            "Design Systems",
+            "Accessibility",
+            "Prototyping"
+          ],
+          "worksFor": {
+            "@type": "Organization",
+            "name": "Freelance/Consultant"
+          },
+          "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://jyoungltd.com"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Resume",
+                "item": "https://jyoungltd.com/resume"
+              }
+            ]
+          }
+        })}
+        </script>
       </Helmet>
       <div className="max-w-3xl md:max-w-4xl lg:max-w-5xl xl:max-w-6xl 2xl:max-w-7xl mx-auto px-4 py-16">
         <Header />

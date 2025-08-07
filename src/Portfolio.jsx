@@ -151,6 +151,41 @@ const Portfolio = () => {
         <meta name="twitter:title" content="James Young | Product Design Leader & AI Prompt Engineer" />
         <meta name="twitter:description" content="At the forefront of healthcare innovation, James Young leads multidisciplinary teams in shaping AI-powered digital products—delivering intuitive, impactful solutions for clinicians and patients alike." />
         <meta name="twitter:image" content="https://jyoungltd.com/Framework_for_Innovation_transparent.png" />
+        
+        {/* Structured Data (JSON-LD) */}
+        <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "name": "James Young Portfolio",
+          "url": "https://jyoungltd.com",
+          "description": "Portfolio of James Young, a product design leader and AI prompt engineer specializing in healthcare innovation.",
+          "author": {
+            "@type": "Person",
+            "name": "James Young",
+            "jobTitle": "Product Design Leader & AI Prompt Engineer",
+            "url": "https://jyoungltd.com",
+            "sameAs": ["https://www.linkedin.com/in/jyoung2k/"]
+          },
+          "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://jyoungltd.com"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Portfolio",
+                "item": "https://jyoungltd.com"
+              }
+            ]
+          }
+        })}
+        </script>
       </Helmet>
       {/* Remove debug bar */}
       {/* Spline background - only render for dark mode or system dark */}
