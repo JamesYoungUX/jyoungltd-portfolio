@@ -68,15 +68,19 @@ const CaseStudyTemplate = ({ id }) => {
         zIndex: 10,
         background: 'linear-gradient(to bottom, var(--bg-secondary), var(--bg-tertiary))'
       }}>
-        <div className="max-w-3xl md:max-w-4xl lg:max-w-5xl xl:max-w-6xl mx-auto px-4 py-16">
+        <div className="max-w-3xl md:max-w-4xl lg:max-w-5xl xl:max-w-6xl 2xl:max-w-7xl mx-auto px-4 py-16">
           <Header />
           <h1 className="text-4xl font-bold" style={{ color: 'var(--text-primary)' }}>{title}</h1>
-          <div className="flex items-center justify-between flex-wrap gap-2 mb-4 mt-2">
-            <div className="flex flex-wrap gap-2">
-              {tags.map((tag, i) => (
-                <span key={i} className="inline-block bg-white/10 text-[var(--text-primary)] px-3 py-1 rounded-full text-xs font-semibold tracking-wide uppercase border border-[var(--border-primary)]">{tag}</span>
-              ))}
-            </div>
+                      <div className="flex items-center justify-between flex-wrap gap-2 mb-4 mt-2">
+              <div className="flex flex-wrap gap-2">
+                {tags.map((tag, i) => (
+                  <span key={i} className="inline-block px-3 py-1 rounded-full text-xs font-semibold tracking-wide uppercase" style={{
+                    backgroundColor: `hsl(${(i * 137.5) % 360}, 70%, 85%)`,
+                    color: `hsl(${(i * 137.5) % 360}, 70%, 25%)`,
+                    border: `1px solid hsl(${(i * 137.5) % 360}, 70%, 75%)`
+                  }}>{tag}</span>
+                ))}
+              </div>
             <div className="flex flex-col items-end">
               <span style={{ color: 'var(--text-primary)', fontWeight: 700, fontSize: '1.15rem' }}>{company}</span>
             </div>
@@ -128,27 +132,97 @@ const CaseStudyTemplate = ({ id }) => {
             </div>
           )}
           {/* Render all sections in order */}
-          {SECTION_KEYS.map((key) => {
-            const section = sections[key] || { content: '', images: [] };
-            return (
-              <section className="mb-8" key={key}>
+          {sections && Array.isArray(sections) ? (
+            sections.map((section, index) => (
+              <section className="mb-12" key={index}>
+                <h2 className="text-2xl font-semibold mb-4" style={{ color: 'var(--text-primary)' }}>{section.heading}</h2>
+                
+                {/* Render images if they exist */}
                 {section.images && section.images.length > 0 && (
-                  <div className="flex flex-wrap gap-4 mb-4">
-                    {section.images.map((img, i) => (
-                      <img
-                        key={i}
-                        src={img}
-                        alt={key + ' image ' + (i + 1)}
-                        className="w-full max-w-md h-56 object-cover rounded-md"
-                      />
-                    ))}
+                  <div className="mb-6">
+                    <div className={`grid gap-4 ${
+                      section.images.length === 1 ? 'grid-cols-1' :
+                      section.images.length === 2 ? 'grid-cols-1 md:grid-cols-2' :
+                      section.images.length === 3 ? 'grid-cols-1 md:grid-cols-3' :
+                      'grid-cols-1 md:grid-cols-2 lg:grid-cols-4'
+                    }`}>
+                      {section.images.map((img, i) => (
+                        <div key={i} className="aspect-video">
+                          <img
+                            src={img}
+                            alt={`${section.heading} image ${i + 1}`}
+                            className="w-full h-full object-cover rounded-md"
+                            loading="lazy"
+                          />
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 )}
-                <h2 className="text-2xl font-semibold mb-2" style={{ color: 'var(--text-primary)' }}>{key}</h2>
-                <div style={{ color: 'var(--text-secondary)' }} dangerouslySetInnerHTML={{ __html: section.content }} />
+                
+                {/* Render content */}
+                {section.content && (
+                  <div 
+                    className="prose prose-lg max-w-none" 
+                    style={{ 
+                      color: 'var(--text-secondary)',
+                      lineHeight: '1.6'
+                    }}
+                    dangerouslySetInnerHTML={{ 
+                      __html: section.content.replace(/&lt;/g, '<').replace(/&gt;/g, '>') 
+                    }} 
+                  />
+                )}
               </section>
-            );
-          })}
+            ))
+          ) : (
+            // Fallback for old object structure
+            SECTION_KEYS.map((key) => {
+              const section = sections[key] || { content: '', images: [] };
+              return (
+                <section className="mb-12" key={key}>
+                  <h2 className="text-2xl font-semibold mb-4" style={{ color: 'var(--text-primary)' }}>{key}</h2>
+                  
+                  {/* Render images if they exist */}
+                  {section.images && section.images.length > 0 && (
+                    <div className="mb-6">
+                      <div className={`grid gap-4 ${
+                        section.images.length === 1 ? 'grid-cols-1' :
+                        section.images.length === 2 ? 'grid-cols-1 md:grid-cols-2' :
+                        section.images.length === 3 ? 'grid-cols-1 md:grid-cols-3' :
+                        'grid-cols-1 md:grid-cols-2 lg:grid-cols-4'
+                      }`}>
+                        {section.images.map((img, i) => (
+                          <div key={i} className="aspect-video">
+                            <img
+                              src={img}
+                              alt={`${key} image ${i + 1}`}
+                              className="w-full h-full object-cover rounded-md"
+                              loading="lazy"
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                  
+                  {/* Render content */}
+                  {section.content && (
+                    <div 
+                      className="prose prose-lg max-w-none" 
+                      style={{ 
+                        color: 'var(--text-secondary)',
+                        lineHeight: '1.6'
+                      }}
+                      dangerouslySetInnerHTML={{ 
+                        __html: section.content.replace(/&lt;/g, '<').replace(/&gt;/g, '>') 
+                      }} 
+                    />
+                  )}
+                </section>
+              );
+            })
+          )}
         </div>
         <div className="max-w-3xl md:max-w-4xl lg:max-w-5xl xl:max-w-6xl 2xl:max-w-7xl mx-auto px-4">
           <Footer />

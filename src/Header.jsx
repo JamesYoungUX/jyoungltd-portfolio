@@ -34,17 +34,52 @@ const Header = () => {
       }
     },
     {
+      type: 'link',
+      label: 'AI Expertise',
+      to: '/#ai-expertise',
+      className: 'relative pb-1 border-b-2 border-transparent hover:border-current transition-all duration-200 body-text text-base font-semibold leading-6 text-secondary',
+      onClick: (e) => {
+        if (location.pathname === '/' && location.hash !== '#ai-expertise') {
+          e.preventDefault();
+          const aiSection = document.getElementById('ai-expertise');
+          if (aiSection) {
+            aiSection.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      }
+    },
+    {
       type: 'button',
       label: 'Case Studies',
       className: 'relative pb-1 border-b-2 border-transparent hover:border-current transition-all duration-200 body-text bg-transparent cursor-pointer text-base font-semibold leading-6 text-secondary',
       onClick: () => {
         navigate('/');
+        
+        // Wait for navigation to complete, then scroll
         setTimeout(() => {
-          const section = document.getElementById('projects');
+          const section = document.getElementById('case-studies');
           if (section) {
-            section.scrollIntoView({ behavior: 'smooth' });
+            // Check if smooth scrolling is supported
+            const supportsSmoothScroll = 'scrollBehavior' in document.documentElement.style;
+            
+            if (supportsSmoothScroll) {
+              // Use smooth scroll if supported
+              const rect = section.getBoundingClientRect();
+              const scrollTop = window.pageYOffset + rect.top - 100;
+              
+              window.scrollTo({
+                top: scrollTop,
+                behavior: 'smooth'
+              });
+            } else {
+              // Fallback for browsers that don't support smooth scroll
+              section.scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'start'
+              });
+            }
           }
-        }, 100);
+        }, 300);
       }
     },
     {
@@ -73,7 +108,14 @@ const Header = () => {
     <>
       <header className="flex items-center mb-24">
         <div className="flex items-center space-x-1 flex-shrink-0">
-          <Link to="/" className="font-medium text-xl text-primary no-underline" aria-label="Home">James Young</Link>
+          <Link to="/" className="no-underline" aria-label="Home">
+            <img 
+              src="/James Young_black.png" 
+              alt="James Young" 
+              className="h-11 w-auto"
+              style={{ filter: 'var(--logo-filter)' }}
+            />
+          </Link>
         </div>
         <div className="flex flex-1 justify-end items-center min-w-0">
           <nav className="hidden md:flex items-center space-x-8 mr-2">

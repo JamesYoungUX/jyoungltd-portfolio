@@ -15,6 +15,7 @@
   --border-secondary: rgba(255,255,255,0.05);
   --accent-primary: #ffffff;
   --accent-secondary: #d1d5db;
+  --logo-filter: invert(1) brightness(1);
 }
 
 [data-theme="light"] {
@@ -28,6 +29,7 @@
   --border-secondary: rgba(0,0,0,0.05);
   --accent-primary: #1f2937;
   --accent-secondary: #374151;
+  --logo-filter: invert(0) brightness(1);
 }
 
 /* Custom styles for the portfolio */
@@ -187,7 +189,135 @@ body {
   color: var(--text-primary);
 }
 .resume-print-btn {
-  color: #000;
-  background: #fff;
-  border-color: #000;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border-color: var(--border-primary);
+} 
+
+/* Print styles for resume */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  /* Hide header logo when printing resume */
+  header img {
+    display: none !important;
+  }
+  
+  /* Hide hamburger menu and theme toggle */
+  header button {
+    display: none !important;
+  }
+  
+  /* Hide mobile navigation */
+  .md\\:hidden {
+    display: none !important;
+  }
+  
+  /* Ensure clean resume layout */
+  .resume-page {
+    background: white !important;
+    color: black !important;
+  }
+  
+  /* Move resume content up when printing */
+  .resume-page .max-w-3xl {
+    padding-top: 1rem !important;
+    margin-top: 0 !important;
+  }
+  
+  /* Reduce header spacing in print */
+  .resume-page header {
+    margin-bottom: 1rem !important;
+  }
+  
+  /* Make company names bold in print */
+  .resume-company {
+    font-weight: bold !important;
+  }
+  
+  /* Make only the company name bold, not the location */
+  .company-name {
+    font-weight: bold !important;
+  }
+  
+  .company-location {
+    font-weight: normal !important;
+  }
+  
+  /* Hide browser-generated metadata in print */
+  @page {
+    margin: 0;
+    size: A4;
+  }
+  
+  /* Hide any browser-generated headers/footers */
+  @media print {
+    body {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    
+    /* Remove any browser-generated headers/footers */
+    html {
+      -webkit-print-color-adjust: exact;
+    }
+    
+    /* Prevent blank pages */
+    .resume-page {
+      page-break-after: avoid;
+      break-after: avoid;
+      margin-bottom: 0 !important;
+      padding-bottom: 0 !important;
+    }
+    
+    /* Ensure content fits on pages */
+    .resume-page > div {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+    
+    /* Remove extra spacing that might cause blank pages */
+    .resume-page section:last-child {
+      margin-bottom: 0 !important;
+      padding-bottom: 0 !important;
+    }
+    
+    /* Hide Header component in print */
+    header {
+      display: none !important;
+    }
+    
+    /* Remove large margins that cause blank pages */
+    .resume-page > div {
+      margin-top: 0 !important;
+      padding-top: 0 !important;
+    }
+    
+    /* Ensure content starts at the top of the page */
+    .resume-page {
+      margin-top: 0 !important;
+      padding-top: 0 !important;
+    }
+    
+    /* Force content to fit on available pages */
+    @page {
+      margin: 0.5in;
+      size: A4;
+    }
+    
+    /* Ensure Areas of Expertise displays in two columns in PDF */
+    .resume-expertise-grid {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr !important;
+      gap: 0.25rem !important;
+      column-gap: 0.5rem !important;
+    }
+    
+    .resume-expertise-grid li {
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+  }
 } 

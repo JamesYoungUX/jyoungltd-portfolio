@@ -9,8 +9,12 @@ const Footer = () => {
           {/* Logo and tagline */}
           <div className="w-full md:max-w-xs flex-shrink-0 text-center md:text-left">
             <div className="flex items-center gap-3 mb-3" aria-label="James Young logo and name" tabIndex="-1">
-              <span className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br from-blue-600 via-purple-400 to-emerald-400 text-white shadow-lg font-bold text-xl">JY</span>
-              <span className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">James Young</span>
+              <img 
+                src="/James Young_black.png" 
+                alt="James Young" 
+                className="h-20 w-auto"
+                style={{ filter: 'var(--logo-filter)' }}
+              />
             </div>
             <p className="max-w-xs text-gray-500 dark:text-gray-400 font-inter text-base">
               Leading teams at the intersection of AI, design, and technology—advancing healthcare through innovative digital solutions and strategic vision.
